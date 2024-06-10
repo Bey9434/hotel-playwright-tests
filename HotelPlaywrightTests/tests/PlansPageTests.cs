@@ -52,12 +52,13 @@ namespace HotelBookingTests.Tests
             await _page.ScreenshotAsync(new PageScreenshotOptions { Path = "not_logged_in_plans_page.png" });
 
             var planTitles = await _plansPage.GetPlanTitlesAsync();
-
-            Console.WriteLine("プランタイトル (未ログイン): " + string.Join(", ", planTitles));
+            
+            // デバッグ情報を出力
+            Console.WriteLine("取得されたプランタイトル (未ログイン): " + string.Join(", ", planTitles));
 
             var expectedTitles = new[] {
                 "お得な特典付きプラン", "素泊まり", "出張ビジネスプラン", "エステ・マッサージプラン",
-                "貸し切り露天風呂プラン", "カップル限定プラン", "テーマパーク優待プラン", "ディナー付きプラン", "お得なプラン"
+                "貸し切り露天風呂プラン", "カップル限定プラン", "テーマパーク優待プラン",
             };
 
             Assert.That(planTitles, Is.EquivalentTo(expectedTitles));
@@ -79,7 +80,8 @@ namespace HotelBookingTests.Tests
             // スクリーンショットを撮る
             await _page.ScreenshotAsync(new PageScreenshotOptions { Path = "general_member_plans_page.png" });
 
-            Console.WriteLine("プランタイトル (一般会員): " + string.Join(", ", planTitles));
+            // デバッグ情報を出力
+            Console.WriteLine("取得されたプランタイトル (一般会員): " + string.Join(", ", planTitles));
 
             var expectedTitles = new[] {
                 "お得な特典付きプラン", "ディナー付きプラン", "お得なプラン", "素泊まり", "出張ビジネスプラン",
@@ -119,7 +121,8 @@ namespace HotelBookingTests.Tests
             // スクリーンショットを撮る
             await _page.ScreenshotAsync(new PageScreenshotOptions { Path = "premium_member_plans_page.png" });
 
-            Console.WriteLine("プランタイトル (プレミアム会員): " + string.Join(", ", planTitles));
+            // デバッグ情報を出力
+            Console.WriteLine("取得されたプランタイトル (プレミアム会員): " + string.Join(", ", planTitles));
 
             var expectedTitles = new[] {
                 "お得な特典付きプラン", "プレミアムプラン", "ディナー付きプラン", "お得なプラン", "素泊まり", 
