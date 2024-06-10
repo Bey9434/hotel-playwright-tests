@@ -22,6 +22,17 @@ namespace HotelBookingTests.Pages
             await _page.ClickAsync(_submitButton);
             await _page.WaitForLoadStateAsync(LoadState.NetworkIdle); 
         }
+
+        public async Task<string> GetEmailMessageAsync()
+        {
+            return await _page.InnerTextAsync("#email-message");
+        }
+
+        public async Task<string> GetPasswordMessageAsync()
+        {
+            return await _page.InnerTextAsync("#password-message");
+        }
+
     }
 }
 
