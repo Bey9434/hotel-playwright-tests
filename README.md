@@ -1,6 +1,7 @@
 # hotel-playwright-tests
 ### 概要
 ホテル予約サイトを模したテスト用のサイトを使用し、３つのテストケースを実行する。
+https://hotel.testplanisphere.dev/ja/index.html
 
 ### プログラミング言語
 * C#
