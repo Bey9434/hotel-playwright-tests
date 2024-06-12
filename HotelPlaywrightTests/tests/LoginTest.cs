@@ -51,10 +51,27 @@ namespace HotelBookingTests.Tests
         [Test]
         public async Task LoggedInDefineUser()
         {
-                await _topPage.OpenAsync();
-                await _loginPage.GoToLoginPageAsync();
-                await _loginPage.LoginAsync(_loginInfo.GeneralMember1.Email, _loginInfo.GeneralMember1.Password);
-                Console.WriteLine("Logged in successfully");
+            await _topPage.OpenAsync();
+            await _loginPage.GoToLoginPageAsync();
+            await _loginPage.LoginAsync(_loginInfo.GeneralMember1.Email, _loginInfo.GeneralMember1.Password);
+            Console.WriteLine("Logged in successfully");
         }
+
+        [Test]
+        public async Task ErrorMessageempty()
+        {
+            await _topPage.OpenAsync();
+            await _loginPage.GoToLoginPageAsync();
+            await _loginPage.LoginAsync("",""); 
+            var emailErrorMessage = await _loginPage.GetEmailMessageAsync();
+            var passwordErrorMessage = await _loginPage.GetPasswordMessageAsync();
+            Assert.That(emailErrorMessage, Is.EqualTo("このフィールドを入力してください。"));
+            Assert.That(passwordErrorMessage, Is.EqualTo("このフィールドを入力してください。"));
+
+            Console.WriteLine("Error messages displayed as expected");
+
+        }
+
+
     }
 }

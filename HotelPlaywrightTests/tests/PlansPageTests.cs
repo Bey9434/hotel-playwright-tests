@@ -69,9 +69,8 @@ namespace HotelBookingTests.Tests
         }
 
         [Test]
-        public async Task ShouldDisplayPlansWhenNotLoggedIn()
+        public async Task PlansNotLoggedIn()
         {
-            Console.WriteLine("ShouldDisplayPlansWhenNotLoggedIn started.");
             await _topPage.OpenAsync();
             await _plansPage.GoToPlansPageAsync();
             //await _page.WaitForLoadStateAsync(LoadState.NetworkIdle);
@@ -86,62 +85,50 @@ namespace HotelBookingTests.Tests
         }
 
         [Test]
-        public async Task ShouldDisplayPlansWhenLoggedInAsGeneralMember()
+        public async Task PlansLoggedInGeneralMember()
         {
-            Console.WriteLine("ShouldDisplayPlansWhenLoggedInAsGeneralMember started.");
+
             await _topPage.OpenAsync();
             await _loginPage.GoToLoginPageAsync();
-            //await _page.WaitForSelectorAsync("form#login-form", new PageWaitForSelectorOptions { Timeout = 10000 });
             await _loginPage.LoginAsync(_loginInfo.GeneralMember1.Email, _loginInfo.GeneralMember1.Password);
-            //await TakeScreenshotAsync("after_login_general_member.png");
 
             Console.WriteLine("Login completed for General Member.");
             Console.WriteLine("Current URL: " + _page.Url);
 
-            //await _page.WaitForURLAsync("**/mypage.html");
             await TakeScreenshotAsync("after_navigate_mypage_general_member.png");
 
             Console.WriteLine("Navigation to mypage completed.");
 
             await _plansPage.GoToPlansPageAsync();
-            //await _page.WaitForSelectorAsync(".card-title", new PageWaitForSelectorOptions { Timeout = 10000 });
-            await TakeScreenshotAsync("general_member_plans_page.png");
+            //await TakeScreenshotAsync("general_member_plans_page.png");
             var planTitles = await _plansPage.GetPlanTitlesAsync();
 
             // デバッグ情報を出力
             Console.WriteLine("取得されたプランタイトル (一般会員): " + string.Join(", ", planTitles));
             Console.WriteLine("期待されたプランタイトル (一般会員): " + string.Join(", ", _plansInfo.GeneralMember));
             Assert.That(planTitles, Is.EquivalentTo(_plansInfo.GeneralMember));
-            Console.WriteLine("ShouldDisplayPlansWhenLoggedInAsGeneralMember completed.");
         }
 
         [Test]
-        public async Task ShouldDisplayPlansWhenLoggedInAsPremiumMember()
+        public async Task PlansLoggedInPremiumMember()
         {
-            Console.WriteLine("ShouldDisplayPlansWhenLoggedInAsPremiumMember started.");
             await _topPage.OpenAsync();
             await _loginPage.GoToLoginPageAsync();
-
             var loginButton = await _page.QuerySelectorAsync("a.btn[href='./login.html']");
             await loginButton.ClickAsync();
             await TakeScreenshotAsync("before_login_premium_member.png");
+
             Console.WriteLine("Navigation to login page completed.");
 
-           // await _page.WaitForSelectorAsync("form#login-form", new PageWaitForSelectorOptions { Timeout = 10000 });
             await _loginPage.LoginAsync(_loginInfo.PremiumMember1.Email, _loginInfo.PremiumMember1.Password);
-            await TakeScreenshotAsync("after_login_premium_member.png");
-
+            //await TakeScreenshotAsync("after_login_premium_member.png");
             Console.WriteLine("Login completed for Premium Member.");
             Console.WriteLine("Current URL: " + _page.Url);
-            
-            //await _page.WaitForURLAsync("**/mypage.html");
             await TakeScreenshotAsync("after_navigate_mypage_premium_member.png");
 
             Console.WriteLine("Navigation to mypage completed.");
 
             await _plansPage.GoToPlansPageAsync();
-
-           // await _page.WaitForSelectorAsync(".card-title", new PageWaitForSelectorOptions { Timeout = 10000 });
             await TakeScreenshotAsync("premium_member_plans_page.png");
 
             var planTitles = await _plansPage.GetPlanTitlesAsync();
@@ -151,8 +138,6 @@ namespace HotelBookingTests.Tests
             Console.WriteLine("期待されたプランタイトル (プレミアム会員): " + string.Join(", ", _plansInfo.PremiumMember));
 
             Assert.That(planTitles, Is.EquivalentTo(_plansInfo.PremiumMember));
-
-            Console.WriteLine("ShouldDisplayPlansWhenLoggedInAsPremiumMember completed.");
         }
     }
 }
