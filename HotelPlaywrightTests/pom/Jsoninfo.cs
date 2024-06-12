@@ -11,29 +11,9 @@ namespace HotelBookingTests.Pages
         public static T LoadJson<T>(string fileName)
         {
             var filePath = Path.Combine(BasePath, fileName);
-            if (!File.Exists(filePath))
-            {
-                throw new FileNotFoundException($"ファイルが見つかりません: {filePath}");
-            }
-
             var jsonString = File.ReadAllText(filePath);
-            Console.WriteLine($"JSONファイルの内容: {jsonString}");
-
-            try
-            {
-                var result = JsonSerializer.Deserialize<T>(jsonString);
-                if (result == null)
-                {
-                    throw new InvalidOperationException("デシリアライズに失敗しました。結果が null です。");
-                }
-                Console.WriteLine($"JSON デシリアライズ成功: {fileName}");
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"JSON デシリアライズに失敗しました: {ex.Message}");
-                throw;
-            }
+            var result = JsonSerializer.Deserialize<T>(jsonString);
+            return result;
         }
     }
 
