@@ -21,12 +21,11 @@ namespace HotelBookingTests.Pages
 
         public async Task ClearCookiesAndStorageAsync()
         {
-        await _page.Context.ClearCookiesAsync();
-        await _page.AddInitScriptAsync(@"() => {
-        localStorage.clear();
-        sessionStorage.clear();
-                            }");
-        Console.WriteLine("Local storage and session storage cleared.");
+            await _page.Context.ClearCookiesAsync();
+            await _page.AddInitScriptAsync(@"() => {
+            localStorage.clear();
+            sessionStorage.clear(); }");
+            Console.WriteLine("Local storage and session storage cleared.");
         }
 
     }
