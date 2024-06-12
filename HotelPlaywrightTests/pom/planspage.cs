@@ -8,6 +8,8 @@ namespace HotelBookingTests.Pages
         private readonly IPage _page;
         private readonly string _planTitlesSelector = ".card-title";
 
+        private readonly string _plansLink = "a.nav-link[href='./plans.html']";
+
         public PlansPage(IPage page)
         {
             _page = page;
@@ -17,6 +19,11 @@ namespace HotelBookingTests.Pages
         {
             await _page.WaitForSelectorAsync(_planTitlesSelector);
             return await _page.EvaluateAsync<string[]>("Array.from(document.querySelectorAll('.card-title')).map(el => el.textContent)");
+        }
+         public async Task GoToPlansPageAsync()
+        {
+            await _page.ClickAsync(_plansLink);
+            await _page.WaitForSelectorAsync(".card-title", new PageWaitForSelectorOptions { Timeout = 10000 });
         }
     }
 }

@@ -1,5 +1,5 @@
 {
-    "notLoggedIn": 
+    "NotLoggedIn": 
     [
         "お得な特典付きプラン",
         "素泊まり",
@@ -10,7 +10,7 @@
         "テーマパーク優待プラン"
     ],
 
-    "generalMember": 
+    "GeneralMember": 
     [
         "お得な特典付きプラン",
         "ディナー付きプラン",
@@ -23,7 +23,7 @@
         "テーマパーク優待プラン"
     ],
     
-    "premiumMember": 
+    "PremiumMember": 
     [
         "お得な特典付きプラン",
         "プレミアムプラン",

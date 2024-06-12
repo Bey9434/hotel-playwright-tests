@@ -15,7 +15,6 @@ namespace HotelBookingTests.Pages
 
         public async Task GoToPlansPageAsync()
         {
-            await _page.WaitForSelectorAsync(_plansLink);
             await _page.ClickAsync(_plansLink);
             await _page.WaitForSelectorAsync(".card-title", new PageWaitForSelectorOptions { Timeout = 10000 });
         }

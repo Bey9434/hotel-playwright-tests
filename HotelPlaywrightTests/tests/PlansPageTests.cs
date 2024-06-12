@@ -36,11 +36,11 @@ namespace HotelBookingTests.Tests
             _loginInfo = JsonHelper.LoadJson<LoginInfo>("login_info.json");
             _plansInfo = JsonHelper.LoadJson<PlansInfo>("plans_info.json");
 
-            // デバッグ用出力
+            /*デバッグ用出力
             Console.WriteLine("PlansInfo - NotLoggedIn: " + string.Join(", ", _plansInfo.NotLoggedIn));
             Console.WriteLine("PlansInfo - GeneralMember: " + string.Join(", ", _plansInfo.GeneralMember));
             Console.WriteLine("PlansInfo - PremiumMember: " + string.Join(", ", _plansInfo.PremiumMember));
-            Console.WriteLine("SetupAsync completed.");
+            Console.WriteLine("SetupAsync completed.");*/
         }
 
         [OneTimeTearDown]
@@ -73,13 +73,13 @@ namespace HotelBookingTests.Tests
         {
             Console.WriteLine("ShouldDisplayPlansWhenNotLoggedIn started.");
             await _topPage.OpenAsync();
-            await _topPage.GoToPlansPageAsync();
-            await _page.WaitForLoadStateAsync(LoadState.NetworkIdle);
-
+            await _plansPage.GoToPlansPageAsync();
+            //await _page.WaitForLoadStateAsync(LoadState.NetworkIdle);
             var planTitles = await _plansPage.GetPlanTitlesAsync();
 
             // デバッグ情報を出力
             Console.WriteLine("取得されたプランタイトル (未ログイン): " + string.Join(", ", planTitles));
+            Console.WriteLine("期待されたプランタイトル (未ログイン): " + string.Join(", ", _plansInfo.NotLoggedIn));
 
             Assert.That(planTitles, Is.EquivalentTo(_plansInfo.NotLoggedIn));
             Console.WriteLine("ShouldDisplayPlansWhenNotLoggedIn completed.");
@@ -90,22 +90,27 @@ namespace HotelBookingTests.Tests
         {
             Console.WriteLine("ShouldDisplayPlansWhenLoggedInAsGeneralMember started.");
             await _topPage.OpenAsync();
-            await _topPage.GoToLoginPageAsync();
-            await _page.WaitForSelectorAsync("form#login-form", new PageWaitForSelectorOptions { Timeout = 10000 });
+            await _loginPage.GoToLoginPageAsync();
+            //await _page.WaitForSelectorAsync("form#login-form", new PageWaitForSelectorOptions { Timeout = 10000 });
             await _loginPage.LoginAsync(_loginInfo.GeneralMember1.Email, _loginInfo.GeneralMember1.Password);
-            await TakeScreenshotAsync("after_login_general_member.png");
+            //await TakeScreenshotAsync("after_login_general_member.png");
+
             Console.WriteLine("Login completed for General Member.");
             Console.WriteLine("Current URL: " + _page.Url);
-            await _page.WaitForURLAsync("**/mypage.html");
+
+            //await _page.WaitForURLAsync("**/mypage.html");
             await TakeScreenshotAsync("after_navigate_mypage_general_member.png");
+
             Console.WriteLine("Navigation to mypage completed.");
-            await _myPage.GoToPlansPageAsync();
-            await _page.WaitForSelectorAsync(".card-title", new PageWaitForSelectorOptions { Timeout = 10000 });
+
+            await _plansPage.GoToPlansPageAsync();
+            //await _page.WaitForSelectorAsync(".card-title", new PageWaitForSelectorOptions { Timeout = 10000 });
             await TakeScreenshotAsync("general_member_plans_page.png");
             var planTitles = await _plansPage.GetPlanTitlesAsync();
 
             // デバッグ情報を出力
             Console.WriteLine("取得されたプランタイトル (一般会員): " + string.Join(", ", planTitles));
+            Console.WriteLine("期待されたプランタイトル (一般会員): " + string.Join(", ", _plansInfo.GeneralMember));
             Assert.That(planTitles, Is.EquivalentTo(_plansInfo.GeneralMember));
             Console.WriteLine("ShouldDisplayPlansWhenLoggedInAsGeneralMember completed.");
         }
@@ -115,34 +120,38 @@ namespace HotelBookingTests.Tests
         {
             Console.WriteLine("ShouldDisplayPlansWhenLoggedInAsPremiumMember started.");
             await _topPage.OpenAsync();
-            await _topPage.GoToLoginPageAsync();
+            await _loginPage.GoToLoginPageAsync();
 
             var loginButton = await _page.QuerySelectorAsync("a.btn[href='./login.html']");
             await loginButton.ClickAsync();
             await TakeScreenshotAsync("before_login_premium_member.png");
             Console.WriteLine("Navigation to login page completed.");
 
-            await _page.WaitForSelectorAsync("form#login-form", new PageWaitForSelectorOptions { Timeout = 10000 });
+           // await _page.WaitForSelectorAsync("form#login-form", new PageWaitForSelectorOptions { Timeout = 10000 });
             await _loginPage.LoginAsync(_loginInfo.PremiumMember1.Email, _loginInfo.PremiumMember1.Password);
             await TakeScreenshotAsync("after_login_premium_member.png");
+
             Console.WriteLine("Login completed for Premium Member.");
             Console.WriteLine("Current URL: " + _page.Url);
-
-            await _page.WaitForURLAsync("**/mypage.html");
+            
+            //await _page.WaitForURLAsync("**/mypage.html");
             await TakeScreenshotAsync("after_navigate_mypage_premium_member.png");
+
             Console.WriteLine("Navigation to mypage completed.");
 
-            await _myPage.GoToPlansPageAsync();
+            await _plansPage.GoToPlansPageAsync();
 
-            await _page.WaitForSelectorAsync(".card-title", new PageWaitForSelectorOptions { Timeout = 10000 });
+           // await _page.WaitForSelectorAsync(".card-title", new PageWaitForSelectorOptions { Timeout = 10000 });
             await TakeScreenshotAsync("premium_member_plans_page.png");
 
             var planTitles = await _plansPage.GetPlanTitlesAsync();
 
             // デバッグ情報を出力
             Console.WriteLine("取得されたプランタイトル (プレミアム会員): " + string.Join(", ", planTitles));
+            Console.WriteLine("期待されたプランタイトル (プレミアム会員): " + string.Join(", ", _plansInfo.PremiumMember));
 
             Assert.That(planTitles, Is.EquivalentTo(_plansInfo.PremiumMember));
+
             Console.WriteLine("ShouldDisplayPlansWhenLoggedInAsPremiumMember completed.");
         }
     }

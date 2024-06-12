@@ -52,7 +52,7 @@ namespace HotelBookingTests.Tests
         public async Task LoggedInDefineUser()
         {
                 await _topPage.OpenAsync();
-                await _topPage.GoToLoginPageAsync();
+                await _loginPage.GoToLoginPageAsync();
                 await _loginPage.LoginAsync(_loginInfo.GeneralMember1.Email, _loginInfo.GeneralMember1.Password);
                 Console.WriteLine("Logged in successfully");
         }
