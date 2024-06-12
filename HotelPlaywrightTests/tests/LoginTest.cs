@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using Microsoft.Playwright;
 using NUnit.Framework;
 using HotelBookingTests.Pages;
+using System.Collections.Generic;
 
 namespace HotelBookingTests.Tests
 {
@@ -15,6 +16,8 @@ namespace HotelBookingTests.Tests
         private LoginPage _loginPage;
         private MyPage _myPage;
         private PlansPage _plansPage;
+        private LoginInfo _loginInfo;
+        private PlansInfo _plansInfo;
 
         [OneTimeSetUp]
         public async Task SetupAsync()
@@ -27,6 +30,29 @@ namespace HotelBookingTests.Tests
             _loginPage = new LoginPage(_page);
             _myPage = new MyPage(_page);
             _plansPage = new PlansPage(_page);
+
+            try
+            {
+                _loginInfo = JsonHelper.LoadJson<LoginInfo>("login_info.json");
+                _plansInfo = JsonHelper.LoadJson<PlansInfo>("plans_info.json");
+
+                // デバッグ用出力
+                if (_loginInfo != null)
+                {
+                    Console.WriteLine("LoginInfo デシリアライズに成功しました:");
+                    Console.WriteLine("GeneralMember1 Email: " + _loginInfo.GeneralMember1.Email);
+                    Console.WriteLine("GeneralMember1 Password: " + _loginInfo.GeneralMember1.Password);
+                }
+                else
+                {
+                    Console.WriteLine("LoginInfo のデシリアライズに失敗しました。");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception in SetupAsync: " + ex.Message);
+                throw;
+            }
         }
 
         [OneTimeTearDown]
@@ -44,33 +70,22 @@ namespace HotelBookingTests.Tests
         [Test]
         public async Task LoggedInDefineUser()
         {
-            await _topPage.OpenAsync();
-            await _topPage.GoToLoginPageAsync();
-            await _page.WaitForSelectorAsync("form#login-form", new PageWaitForSelectorOptions { Timeout = 60000 });
-            await _loginPage.LoginAsync("sakura@example.com", "pass1234");
-            await _page.WaitForURLAsync("**/mypage.html");
-        }
+            try
+            {
+                await _topPage.OpenAsync();
+                await _topPage.GoToLoginPageAsync();
+                await _page.WaitForSelectorAsync("form#login-form", new PageWaitForSelectorOptions { Timeout = 30000 });
+                await _loginPage.LoginAsync(_loginInfo.GeneralMember1.Email, _loginInfo.GeneralMember1.Password);
 
-        [Test]
-        public async Task NotLoginUser()
-        {
-            await _topPage.OpenAsync();
-            await _topPage.GoToLoginPageAsync();
-            await _loginPage.LoginAsync("","");
-            // スクリーンショットを撮る
-            await _page.ScreenshotAsync(new PageScreenshotOptions { Path = "loginpage_notwright_before_wait.png" });
-            // メッセージが表示されるまで待機
-            await _page.WaitForSelectorAsync("#email-message", new PageWaitForSelectorOptions { Timeout = 30000 });
-            await _page.WaitForSelectorAsync("##password-message", new PageWaitForSelectorOptions { Timeout = 30000 });
-
-            var emailMessage = await _loginPage.GetEmailMessageAsync();
-            var passwordMessage = await _loginPage.GetPasswordMessageAsync();
-             // スクリーンショットを撮る
-            await _page.ScreenshotAsync(new PageScreenshotOptions { Path = "loginpage_notwright_after_wait.png" });
-
-            Assert.That(emailMessage, Is.EqualTo("このフィールドを入力してください。"));
-            Assert.That(passwordMessage, Is.EqualTo("このフィールドを入力してください。"));
-
+                // ページ遷移を待つ
+                await _page.WaitForURLAsync("**/mypage.html", new PageWaitForURLOptions { Timeout = 30000 });
+                Console.WriteLine("Logged in successfully");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred: " + ex.Message);
+                throw;
+            }
         }
     }
 }

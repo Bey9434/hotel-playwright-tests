@@ -1,26 +1,18 @@
 {
-    "generalMember1": 
-    {
-        "email": "sakura@example.com",
-        "password": "pass1234"
+    "GeneralMember1": {
+        "Email": "sakura@example.com",
+        "Password": "pass1234"
     },
-
-    "generalMenber2":
-    {
-        "email": "yoshiki@example.com",
-        "password": "pass-pass"
-
+    "GeneralMember2": {
+        "Email": "yoshiki@example.com",
+        "Password": "pass-pass"
     },
-
-    "premiumMember1":
-    {
-        "email": "ichiro@example.com",
-        "password": "password"
+    "PremiumMember1": {
+        "Email": "ichiro@example.com",
+        "Password": "password"
     },
-
-    "premiumMember2":
-    {
-        "email": "jun@example.com",
-        "password": "pa55w0rd!"
+    "PremiumMember2": {
+        "Email": "jun@example.com",
+        "Password": "pa55w0rd!"
     }
 }
