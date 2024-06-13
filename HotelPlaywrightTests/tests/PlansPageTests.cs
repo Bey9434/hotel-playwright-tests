@@ -22,8 +22,6 @@ namespace HotelBookingTests.Tests
         [OneTimeSetUp]
         public async Task SetupAsync()
         {
-            Console.WriteLine("SetupAsync started.");
-
             var playwright = await Playwright.CreateAsync();
             _browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions { Headless = true });
             _context = await _browser.NewContextAsync();
@@ -32,15 +30,8 @@ namespace HotelBookingTests.Tests
             _loginPage = new LoginPage(_page);
             _myPage = new MyPage(_page);
             _plansPage = new PlansPage(_page);
-
             _loginInfo = JsonHelper.LoadJson<LoginInfo>("login_info.json");
             _plansInfo = JsonHelper.LoadJson<PlansInfo>("plans_info.json");
-
-            /*デバッグ用出力
-            Console.WriteLine("PlansInfo - NotLoggedIn: " + string.Join(", ", _plansInfo.NotLoggedIn));
-            Console.WriteLine("PlansInfo - GeneralMember: " + string.Join(", ", _plansInfo.GeneralMember));
-            Console.WriteLine("PlansInfo - PremiumMember: " + string.Join(", ", _plansInfo.PremiumMember));
-            Console.WriteLine("SetupAsync completed.");*/
         }
 
         [OneTimeTearDown]
@@ -55,33 +46,27 @@ namespace HotelBookingTests.Tests
             await _topPage.ClearCookiesAndStorageAsync();
         }
 
-        private async Task TakeScreenshotAsync(string path)
-        {
-            try
-            {
-                await _page.ScreenshotAsync(new PageScreenshotOptions { Path = path });
-                Console.WriteLine($"スクリーンショットが正常に保存されました: {path}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"スクリーンショットの保存に失敗しました: {path} - エラー: {ex.Message}");
-            }
-        }
+        /*スクリーンショットをとってデバッグしたいときに使用する
+        private async Task TakeScreenshotAsync(string fileName)
+        {   
+            string directoryPath = @"C:\Users\Tuyug\Desktop\hotel-playwright-tests\HotelPlaywrightTests\src"; //ここに絶対パスでスクリーンショットを保存したいフォルダを指定する。
+            string fullPath = Path.Combine(directoryPath, fileName);
+            await _page.ScreenshotAsync(new PageScreenshotOptions { Path = fullPath });
+        }*/
+        
 
         [Test]
         public async Task PlansNotLoggedIn()
         {
             await _topPage.OpenAsync();
             await _plansPage.GoToPlansPageAsync();
-            //await _page.WaitForLoadStateAsync(LoadState.NetworkIdle);
             var planTitles = await _plansPage.GetPlanTitlesAsync();
 
             // デバッグ情報を出力
             Console.WriteLine("取得されたプランタイトル (未ログイン): " + string.Join(", ", planTitles));
-            Console.WriteLine("期待されたプランタイトル (未ログイン): " + string.Join(", ", _plansInfo.NotLoggedIn));
+            Console.WriteLine("実際のプランタイトル (未ログイン): " + string.Join(", ", _plansInfo.NotLoggedIn));
 
             Assert.That(planTitles, Is.EquivalentTo(_plansInfo.NotLoggedIn));
-            Console.WriteLine("ShouldDisplayPlansWhenNotLoggedIn completed.");
         }
 
         [Test]
@@ -91,21 +76,13 @@ namespace HotelBookingTests.Tests
             await _topPage.OpenAsync();
             await _loginPage.GoToLoginPageAsync();
             await _loginPage.LoginAsync(_loginInfo.GeneralMember1.Email, _loginInfo.GeneralMember1.Password);
-
-            Console.WriteLine("Login completed for General Member.");
-            Console.WriteLine("Current URL: " + _page.Url);
-
-            await TakeScreenshotAsync("after_navigate_mypage_general_member.png");
-
-            Console.WriteLine("Navigation to mypage completed.");
-
             await _plansPage.GoToPlansPageAsync();
-            //await TakeScreenshotAsync("general_member_plans_page.png");
             var planTitles = await _plansPage.GetPlanTitlesAsync();
 
             // デバッグ情報を出力
             Console.WriteLine("取得されたプランタイトル (一般会員): " + string.Join(", ", planTitles));
-            Console.WriteLine("期待されたプランタイトル (一般会員): " + string.Join(", ", _plansInfo.GeneralMember));
+            Console.WriteLine("実際のプランタイトル (一般会員): " + string.Join(", ", _plansInfo.GeneralMember));
+
             Assert.That(planTitles, Is.EquivalentTo(_plansInfo.GeneralMember));
         }
 
@@ -114,28 +91,13 @@ namespace HotelBookingTests.Tests
         {
             await _topPage.OpenAsync();
             await _loginPage.GoToLoginPageAsync();
-            var loginButton = await _page.QuerySelectorAsync("a.btn[href='./login.html']");
-            await loginButton.ClickAsync();
-            await TakeScreenshotAsync("before_login_premium_member.png");
-
-            Console.WriteLine("Navigation to login page completed.");
-
             await _loginPage.LoginAsync(_loginInfo.PremiumMember1.Email, _loginInfo.PremiumMember1.Password);
-            //await TakeScreenshotAsync("after_login_premium_member.png");
-            Console.WriteLine("Login completed for Premium Member.");
-            Console.WriteLine("Current URL: " + _page.Url);
-            await TakeScreenshotAsync("after_navigate_mypage_premium_member.png");
-
-            Console.WriteLine("Navigation to mypage completed.");
-
             await _plansPage.GoToPlansPageAsync();
-            await TakeScreenshotAsync("premium_member_plans_page.png");
-
             var planTitles = await _plansPage.GetPlanTitlesAsync();
 
             // デバッグ情報を出力
             Console.WriteLine("取得されたプランタイトル (プレミアム会員): " + string.Join(", ", planTitles));
-            Console.WriteLine("期待されたプランタイトル (プレミアム会員): " + string.Join(", ", _plansInfo.PremiumMember));
+            Console.WriteLine("実際のプランタイトル (プレミアム会員): " + string.Join(", ", _plansInfo.PremiumMember));
 
             Assert.That(planTitles, Is.EquivalentTo(_plansInfo.PremiumMember));
         }
