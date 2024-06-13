@@ -6,6 +6,7 @@ namespace HotelBookingTests.Pages
 {
     public static class JsonHelper
     {
+        //BasePathにはJsonfileが格納されているフォルダの絶対パスを指定する。
         private static readonly string BasePath = @"C:\Users\Tuyug\Desktop\hotel-playwright-tests\HotelPlaywrightTests\Info\";
 
         public static T LoadJson<T>(string fileName)
@@ -13,6 +14,10 @@ namespace HotelBookingTests.Pages
             var filePath = Path.Combine(BasePath, fileName);
             var jsonString = File.ReadAllText(filePath);
             var result = JsonSerializer.Deserialize<T>(jsonString);
+            if (result == null)
+            {
+                throw new InvalidOperationException($"ファイル '{filePath}' の JSON データをデシリアライズに失敗しました。");
+            }
             return result;
         }
     }

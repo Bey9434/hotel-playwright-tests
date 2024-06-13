@@ -6,8 +6,6 @@ namespace HotelBookingTests.Pages
     public class PlansPage
     {
         private readonly IPage _page;
-        private readonly string _planTitlesSelector = ".card-title";
-
         private readonly string _plansLink = "a.nav-link[href='./plans.html']";
 
         public PlansPage(IPage page)
@@ -18,15 +16,21 @@ namespace HotelBookingTests.Pages
         public async Task<string[]> GetPlanTitlesAsync()
         {
             await _page.WaitForLoadStateAsync(LoadState.NetworkIdle);
-            //await _page.WaitForSelectorAsync(_planTitlesSelector);
-            return await _page.EvaluateAsync<string[]>("Array.from(document.querySelectorAll('.card-title')).map(el => el.textContent)");
+            var elements = await _page.QuerySelectorAllAsync(".card-title");
+            var planTitles = new List<string>();
+            foreach (var element in elements)
+            {
+               var text = await element.TextContentAsync();
+               if (text != null)
+                {
+                    planTitles.Add(text);
+                }
+            }
+            return planTitles.ToArray();
         }
          public async Task GoToPlansPageAsync()
         {
             await _page.ClickAsync(_plansLink);
-            //await _page.WaitForSelectorAsync( _planTitlesSelector, new PageWaitForSelectorOptions { Timeout = 10000 });
-            //await _page.WaitForURLAsync("**/plans.html");
-            //await _page.WaitForLoadStateAsync(LoadState.NetworkIdle);
         }
     }
 }

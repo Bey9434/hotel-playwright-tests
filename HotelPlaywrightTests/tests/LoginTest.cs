@@ -14,7 +14,6 @@ namespace HotelBookingTests.Tests
         private IPage _page;
         private TopPage _topPage;
         private LoginPage _loginPage;
-        private MyPage _myPage;
         private PlansPage _plansPage;
         private LoginInfo _loginInfo;
         private PlansInfo _plansInfo;
@@ -28,7 +27,6 @@ namespace HotelBookingTests.Tests
             _page = await _context.NewPageAsync();
             _topPage = new TopPage(_page);
             _loginPage = new LoginPage(_page);
-            _myPage = new MyPage(_page);
             _plansPage = new PlansPage(_page);
             _loginInfo = JsonHelper.LoadJson<LoginInfo>("login_info.json");
             _plansInfo = JsonHelper.LoadJson<PlansInfo>("plans_info.json");
