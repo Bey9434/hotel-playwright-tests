@@ -21,7 +21,7 @@ namespace HotelBookingTests.Pages
             return result;
         }
     }
-
+    
     public class LoginInfo
     {
         public UserCredentials GeneralMember1 { get; set; } = new UserCredentials();
