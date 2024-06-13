@@ -29,9 +29,7 @@ namespace HotelBookingTests.Tests
             _loginPage = new LoginPage(_page);
             _plansPage = new PlansPage(_page);
             _loginInfo = JsonHelper.LoadJson<LoginInfo>("login_info.json");
-            _plansInfo = JsonHelper.LoadJson<PlansInfo>("plans_info.json");
-
-             
+            _plansInfo = JsonHelper.LoadJson<PlansInfo>("plans_info.json"); 
         }
 
         [OneTimeTearDown]
@@ -65,11 +63,7 @@ namespace HotelBookingTests.Tests
             var passwordErrorMessage = await _loginPage.GetPasswordMessageAsync();
             Assert.That(emailErrorMessage, Is.EqualTo("このフィールドを入力してください。"));
             Assert.That(passwordErrorMessage, Is.EqualTo("このフィールドを入力してください。"));
-
             Console.WriteLine("Error messages displayed as expected");
-
         }
-
-
     }
 }

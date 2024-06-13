@@ -50,8 +50,8 @@ namespace HotelBookingTests.Tests
             string directoryPath = @"C:\Users\Tuyug\Desktop\hotel-playwright-tests\HotelPlaywrightTests\src"; //ここに絶対パスでスクリーンショットを保存したいフォルダを指定する。
             string fullPath = Path.Combine(directoryPath, fileName);
             await _page.ScreenshotAsync(new PageScreenshotOptions { Path = fullPath });
-        }*/
-        
+        }
+        */  
 
         [Test]
         public async Task PlansNotLoggedIn()

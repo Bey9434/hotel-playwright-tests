@@ -7,7 +7,7 @@ namespace HotelBookingTests.Pages
     public static class JsonHelper
     {
         //BasePathにはJsonfileが格納されているフォルダの絶対パスを指定する。
-        private static readonly string BasePath = @"C:\Users\Tuyug\Desktop\hotel-playwright-tests\HotelPlaywrightTests\Info\";
+        private static readonly string BasePath = @"";
 
         public static T LoadJson<T>(string fileName)
         {
