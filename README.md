@@ -53,7 +53,7 @@
     dotnet test --filter "LoginPageTests"
     dotnet test --filter "PlansPageTests"
     ```
-### 詳細
+### 詳細と注意点
 
 #### LoginPageTests.cs
 このテストファイルでは、以下のテストケースを対象とする。
