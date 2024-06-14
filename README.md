@@ -40,7 +40,7 @@
 
 1. **リポジトリをクローン**
     ```sh
-    git clone https://github.com/yourusername/hotel-playwright-tests.git
+    git clone https://github.com/Bey9434/hotel-playwright-tests.git
     ```
 
 2. **依存関係をインストール**
