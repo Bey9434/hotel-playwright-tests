@@ -44,7 +44,6 @@
 
 2. **依存関係をインストール**
     ```sh
-    cd hotel-playwright-tests/HotelPlaywrightTests/HotelPlaywrightTests
     dotnet restore
     ```
 
@@ -66,7 +65,7 @@
 - **PlansLoggedInGeneralMember**: 一般会員でログイン時に正しい宿泊プランが表示されることを確認する。
 - **PlansLoggedInPremiumMember**: プレミアム会員でログイン時に正しい宿泊プランが表示されることを確認する。
 
-#### Jsoninfo.csのJsonHelperについて
+#### jsoninfo.csのJsonHelperについて
 ログイン情報とプラン情報が保存されているJsonfileを保存するフォルダの指定を行う。
 private static readonly string BasePath = @"";
 
