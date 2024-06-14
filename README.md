@@ -30,24 +30,44 @@
 5. **プレミアム会員の確認**  
    プレミアム会員でログインした状態で表示される宿泊プラン一覧を確認します。
 
-
-### 依存関係
+### 必要な環境
 
 - [Microsoft.Playwright](https://playwright.dev/dotnet/docs/intro)
+- .NET SDK: バージョン7.0以降
+- Visual Studio Code (推奨)
 
 ### 実行方法
 
 1. **リポジトリをクローン**
     ```sh
-    git clone https://github.com/yourusername/hotel-playwright-tests.git
+    git clone https://github.com/Bey9434/hotel-playwright-tests
     ```
 
 2. **依存関係をインストール**
+
+    HotelPlaywrightTests.csprojが存在するディレクトリに移動して以下のコマンドを実行する。
+
     ```sh
     dotnet restore
     ```
 
-3. **テストの実行**
+    ※.NETのバージョンが7.0以外の場合、.csproj内の`<TargetFramework>`を使用しているバージョンに合わせて変更すること。
+    
+3. **プロジェクトのビルド**
+
+    ```sh
+    dotnet build
+    ```
+    
+4. **Playwrightブラウザのインストール**
+
+    ```sh
+    pwsh bin/Debug/net7.0/playwright.ps1 install
+    ```
+    
+    ※別のバージョンの.NETを使用している場合、/net7.0/をバージョンに合わせて調整すること。
+   
+5. **テストの実行**
     ```sh
     dotnet test --filter "LoginPageTests"
     dotnet test --filter "PlansPageTests"
