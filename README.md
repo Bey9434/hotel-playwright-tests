@@ -34,6 +34,7 @@
 ### 依存関係
 
 - [Microsoft.Playwright](https://playwright.dev/dotnet/docs/intro)
+- .NET SDK: バージョン7.0
 
 ### 実行方法
 
