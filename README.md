@@ -44,25 +44,29 @@
     ```
 
 2. **依存関係をインストール**
-   
-   HotelPlaywrightTests.csprojが存在するディレクトリに移動して以下のコマンドを実行する。
-   
-  　※.NETのバージョンが7.0以外の場合、.csproj内の<TargetFramework>を使用しているバージョンに合わせて変更すること。
-   
+
+    HotelPlaywrightTests.csprojが存在するディレクトリに移動して以下のコマンドを実行する。
+
     ```sh
     dotnet restore
     ```
+
+    ※.NETのバージョンが7.0以外の場合、.csproj内の`<TargetFramework>`を使用しているバージョンに合わせて変更すること。
     
-3.**プロジェクトのビルド**
+3. **プロジェクトのビルド**
+
     ```sh
     dotnet build
     ```
-4.　**Playwrightブラウザのインストール**
+    
+4. **Playwrightブラウザのインストール**
+
     ```sh
     pwsh bin/Debug/net7.0/playwright.ps1 install
     ```
     
     ※別のバージョンの.NETを使用している場合、/net7.0/をバージョンに合わせて調整すること。
+   
 5. **テストの実行**
     ```sh
     dotnet test --filter "LoginPageTests"
