@@ -86,7 +86,7 @@
 - **PlansLoggedInPremiumMember**: プレミアム会員でログイン時に正しい宿泊プランが表示されることを確認する。
 
 #### libraryフォルダに存在するjsoninfo.csのJsonHelperについて
-ログイン情報とプラン情報が保存されているJsonfileを保存するフォルダの指定を行う。
+ログイン情報とプラン情報が保存されているInfoフォルダの絶対パスをを指定すること。
 ```csharp
 private static readonly string BasePath = @"";
 
