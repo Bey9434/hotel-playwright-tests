@@ -87,6 +87,7 @@
 
 #### libraryフォルダに存在するjsoninfo.csのJsonHelperについて
 ログイン情報とプラン情報が保存されているJsonfileを保存するフォルダの指定を行う。
+```csharp
 private static readonly string BasePath = @"";
 
 
