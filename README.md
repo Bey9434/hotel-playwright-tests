@@ -55,6 +55,7 @@
 4.　**Playwrightブラウザのインストール**
     ```sh
     pwsh bin/Debug/net7.0/playwright.ps1 install
+    ※別のバージョンの.NETを使用している場合、/net.7.0/をバージョンに合わせて調整してください。
     ```
 5. **テストの実行**
     ```sh
