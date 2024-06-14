@@ -85,7 +85,7 @@
 - **PlansLoggedInGeneralMember**: 一般会員でログイン時に正しい宿泊プランが表示されることを確認する。
 - **PlansLoggedInPremiumMember**: プレミアム会員でログイン時に正しい宿泊プランが表示されることを確認する。
 
-#### jsoninfo.csのJsonHelperについて
+#### libraryフォルダに存在するjsoninfo.csのJsonHelperについて
 ログイン情報とプラン情報が保存されているJsonfileを保存するフォルダの指定を行う。
 private static readonly string BasePath = @"";
 
