@@ -79,20 +79,20 @@
 
 ### 詳細と注意点
 
-#### 1. LoginPageTests.cs
+#### 1. **LoginPageTests.cs**
 
 このテストファイルでは、以下のテストケースを対象とする。
 
-- **LoggedInDefineUser**: 登録ユーザーでのログインを確認する。
-- **ErrorMessageempty**: メールアドレスとパスワードが未入力の場合のエラーメッセージが表示されることを確認する。
+- LoggedInDefineUser: 登録ユーザーでのログインを確認する。
+- ErrorMessageempty: メールアドレスとパスワードが未入力の場合のエラーメッセージが表示されることを確認する。
 
-#### 2. PlansPageTests.cs
+#### 2. **PlansPageTests.cs**
 
 このテストファイルでは、以下のテストケースを対象とする。
 
-- **PlansNotLoggedIn**: 未ログイン時に正しい宿泊プランが表示されることを確認する。
-- **PlansLoggedInGeneralMember**: 一般会員でログイン時に正しい宿泊プランが表示されることを確認する。
-- **PlansLoggedInPremiumMember**: プレミアム会員でログイン時に正しい宿泊プランが表示されることを確認する。
+- PlansNotLoggedIn: 未ログイン時に正しい宿泊プランが表示されることを確認する。
+- PlansLoggedInGeneralMember: 一般会員でログイン時に正しい宿泊プランが表示されることを確認する。
+- PlansLoggedInPremiumMember: プレミアム会員でログイン時に正しい宿泊プランが表示されることを確認する。
 
 ### pre-commitの導入
 
