@@ -35,7 +35,7 @@
 ### 必要な環境
 
 - [Microsoft.Playwright](https://playwright.dev/dotnet/docs/intro)
-- .NET SDK: バージョン7.0以降
+- .NET SDK: バージョン8.0以降
 - Visual Studio Code (推奨)
 
 ### 実行方法
@@ -54,7 +54,7 @@
    dotnet restore
    ```
 
-   ※.NETのバージョンが7.0以外の場合、.csproj内の`<TargetFramework>`を使用しているバージョンに合わせて変更すること。
+   ※.NETのバージョンが8.0以外の場合、.csproj内の`<TargetFramework>`を使用しているバージョンに合わせて変更すること。
 
 3. **プロジェクトのビルド**
 
@@ -65,7 +65,7 @@
 4. **Playwrightブラウザのインストール**
 
    ```sh
-   pwsh bin/Debug/net7.0/playwright.ps1 install
+   pwsh bin/Debug/net8.0/playwright.ps1 install
    ```
 
    ※別のバージョンの.NETを使用している場合、/net7.0/をバージョンに合わせて調整すること。
@@ -79,17 +79,40 @@
 
 ### 詳細と注意点
 
-#### LoginPageTests.cs
+#### 1. LoginPageTests.cs
 
 このテストファイルでは、以下のテストケースを対象とする。
 
 - **LoggedInDefineUser**: 登録ユーザーでのログインを確認する。
 - **ErrorMessageempty**: メールアドレスとパスワードが未入力の場合のエラーメッセージが表示されることを確認する。
 
-#### PlansPageTests.cs
+#### 2. PlansPageTests.cs
 
 このテストファイルでは、以下のテストケースを対象とする。
 
 - **PlansNotLoggedIn**: 未ログイン時に正しい宿泊プランが表示されることを確認する。
 - **PlansLoggedInGeneralMember**: 一般会員でログイン時に正しい宿泊プランが表示されることを確認する。
 - **PlansLoggedInPremiumMember**: プレミアム会員でログイン時に正しい宿泊プランが表示されることを確認する。
+
+### pre-commitの導入
+
+pre-commitはコミット前に自動でコードのチェックやテストを実施し、品質を保つためのツールである。
+
+この設定では、JSONやYAMLの構文チェック、C#のコードフォーマット、テスト実行を自動化の機能を実装している。
+
+1. **pre-commitのインストール**
+
+   以下のコマンドを実施し、pre-commitをインストールする。
+
+   ```sh
+   pip install pre-commit
+   ```
+
+2. **Pre-commit フックの有効化**
+
+   プロジェクトディレクトリに移動して。pre-commitをインストールする。
+
+   ```sh
+   cd /path/to/your/hotel-playwright-tests
+   pre-commit install
+   ```
