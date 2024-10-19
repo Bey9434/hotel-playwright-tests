@@ -93,7 +93,3 @@
 - **PlansNotLoggedIn**: 未ログイン時に正しい宿泊プランが表示されることを確認する。
 - **PlansLoggedInGeneralMember**: 一般会員でログイン時に正しい宿泊プランが表示されることを確認する。
 - **PlansLoggedInPremiumMember**: プレミアム会員でログイン時に正しい宿泊プランが表示されることを確認する。
-
-```
-
-```
