@@ -9,14 +9,14 @@ namespace HotelBookingTests.Pages
         private readonly string _emailInput = "#email";
         private readonly string _passwordInput = "#password";
         private readonly string _submitButton = "#login-button";
-        private readonly string _loginPageURL = "a.btn[href=\"./login.html\"]"; 
+        private readonly string _loginPageURL = "a.btn[href=\"./login.html\"]";
 
         public LoginPage(IPage page)
         {
             _page = page;
         }
 
-        
+
         public async Task GoToLoginPageAsync()
         {
             await _page.ClickAsync(_loginPageURL);

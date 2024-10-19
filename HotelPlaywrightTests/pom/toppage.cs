@@ -6,7 +6,7 @@ namespace HotelBookingTests.Pages
     public class TopPage
     {
         private readonly IPage _page;
-        private readonly string _url = "https://hotel.testplanisphere.dev/ja/"; 
+        private readonly string _url = "https://hotel.testplanisphere.dev/ja/";
 
         public TopPage(IPage page)
         {

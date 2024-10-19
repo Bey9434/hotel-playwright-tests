@@ -29,7 +29,8 @@ namespace HotelBookingTests.Tests
             _loginPage = new LoginPage(_page);
             _plansPage = new PlansPage(_page);
             _loginInfo = JsonHelper.LoadJson<LoginInfo>("login_info.json");
-            _plansInfo = JsonHelper.LoadJson<PlansInfo>("plans_info.json"); 
+            _plansInfo = JsonHelper.LoadJson<PlansInfo>("plans_info.json");
+
         }
 
         [OneTimeTearDown]
@@ -43,6 +44,7 @@ namespace HotelBookingTests.Tests
         {
             await _topPage.ClearCookiesAndStorageAsync();
         }
+
 
         [Test]
         public async Task LoggedInDefineUser()
@@ -58,7 +60,7 @@ namespace HotelBookingTests.Tests
         {
             await _topPage.OpenAsync();
             await _loginPage.GoToLoginPageAsync();
-            await _loginPage.LoginAsync("",""); 
+            await _loginPage.LoginAsync("", "");
             var emailErrorMessage = await _loginPage.GetEmailMessageAsync();
             var passwordErrorMessage = await _loginPage.GetPasswordMessageAsync();
             Assert.That(emailErrorMessage, Is.EqualTo("このフィールドを入力してください。"));

@@ -20,15 +20,15 @@ namespace HotelBookingTests.Pages
             var planTitles = new List<string>();
             foreach (var element in elements)
             {
-               var text = await element.TextContentAsync();
-               if (text != null)
+                var text = await element.TextContentAsync();
+                if (text != null)
                 {
                     planTitles.Add(text);
                 }
             }
             return planTitles.ToArray();
         }
-         public async Task GoToPlansPageAsync()
+        public async Task GoToPlansPageAsync()
         {
             await _page.ClickAsync(_plansLink);
         }

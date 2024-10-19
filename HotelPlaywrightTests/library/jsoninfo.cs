@@ -6,9 +6,8 @@ namespace HotelBookingTests.Pages
 {
     public static class JsonHelper
     {
-        //BasePathにはJsonfileが格納されているフォルダの絶対パスを指定する。(\hotel-playwright-tests\HotelPlaywrightTests\Info"ここに格納されている。)
-        private static readonly string BasePath = @"";
 
+        private static readonly string BasePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Info");
         public static T LoadJson<T>(string fileName)
         {
             var filePath = Path.Combine(BasePath, fileName);
@@ -21,7 +20,7 @@ namespace HotelBookingTests.Pages
             return result;
         }
     }
-    
+
     public class LoginInfo
     {
         public UserCredentials GeneralMember1 { get; set; } = new UserCredentials();

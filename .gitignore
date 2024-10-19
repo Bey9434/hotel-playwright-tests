@@ -1,3 +1,6 @@
 # Ignore build results
 bin/
 obj/
+
+# prettier
+node_modules/
