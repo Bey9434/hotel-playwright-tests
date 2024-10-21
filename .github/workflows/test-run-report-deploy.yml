@@ -29,7 +29,7 @@ jobs:
       - name: Install dependencies
         run: |
           echo '{}' > package.json
-           npm install @playwright/test@latest
+          npm install @playwright/test@latest
 
       - name: Run Playwright tests
         run: npx playwright test --reporter=html
@@ -39,6 +39,13 @@ jobs:
 
       - name: Move report to docs
         run: mv playwright-report/* docs/
+
+        # ここでアーティファクトをアップロード
+      - name: Upload artifact to GitHub Pages
+        uses: actions/upload-pages-artifact@v1
+        with:
+          name: github-pages-${{ github.run_number }} # ユニークなアーティファクト名を使用
+          path: docs/ # docsフォルダをアップロード
 
       - name: Commit and push changes
         run: |
