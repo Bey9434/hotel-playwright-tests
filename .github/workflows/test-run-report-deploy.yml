@@ -24,11 +24,15 @@ jobs:
           node-version: "v20.14.0"
 
       - name: Install dependencies
-        run: echo '{}' > package.json
-          npm install playwrigh@latest
+        run: |
+          echo '{}' > package.json
+          npm install playwright@latest
 
       - name: Run Playwright tests
         run: npx playwright test --reporter=html
+
+      - name: Create docs folder if not exists
+        run: mkdir -p docs # docsフォルダがない場合に作成
 
       - name: Move report to docs
         run: mv playwright-report/* docs/
