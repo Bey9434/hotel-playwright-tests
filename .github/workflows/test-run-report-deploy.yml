@@ -37,7 +37,11 @@ jobs:
 
         # 古いアーティファクトを削除
       - name: Cleanup old artifacts
-        run: rm -rf docs/*
+        run: |
+          rm -rf docs/*
+          git add docs/
+          git commit -m "Clean old docs"
+          git push
 
       - name: Run Playwright tests
         run: npx playwright test --reporter=html
