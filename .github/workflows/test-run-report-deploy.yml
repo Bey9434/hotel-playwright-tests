@@ -26,7 +26,7 @@ jobs:
       - name: Install dependencies
         run: |
           echo '{}' > package.json
-          npm install playwright@latest
+          npm install playwright/test@latest
 
       - name: Run Playwright tests
         run: npx playwright test --reporter=html
