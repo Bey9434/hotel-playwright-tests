@@ -42,3 +42,6 @@ jobs:
 
       - name: Move report to docs
         run: mv playwright-report/* docs/
+
+      - name: List docs folder after move
+        run: ls -la docs/
