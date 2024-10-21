@@ -23,6 +23,9 @@ jobs:
         with:
           node-version: "v20.14.0"
 
+      - name: Install Playwright browsers
+        run: npx playwright install
+
       - name: Install dependencies
         run: |
           echo '{}' > package.json
