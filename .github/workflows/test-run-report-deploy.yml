@@ -34,6 +34,9 @@ jobs:
       - name: Run Playwright tests
         run: npx playwright test --reporter=html
 
+      - name: List playwright report files before move
+        run: ls -la playwright-report/ # Playwrightレポートが生成されているか確認
+
       - name: Create docs folder if not exists
         run: mkdir -p docs # docsフォルダがない場合に作成
 
