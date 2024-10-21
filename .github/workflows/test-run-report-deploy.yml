@@ -19,7 +19,8 @@ jobs:
           node-version: "v20.14.0"
 
       - name: Install dependencies
-        run: npm install
+        run: echo '{}' > package.json
+          npm install playwrigh@latest
 
       - name: Run Playwright tests
         run: npx playwright test --reporter=html
