@@ -40,12 +40,18 @@ jobs:
       - name: Move report to docs
         run: mv playwright-report/* docs/
 
-        # ここでアーティファクトをアップロード
+        # アーティファクトをアップロード
       - name: Upload artifact to GitHub Pages
         uses: actions/upload-pages-artifact@v1
         with:
-          name: github-pages-${{ github.run_number }} # ユニークなアーティファクト名を使用
-          path: docs/ # docsフォルダをアップロード
+          name: github-pages-${{ github.run_number }}-${{ github.run_attempt }} # ユニークな名前にする
+          path: docs/
+
+      # デプロイ時に特定のアーティファクト名を指定
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
+        with:
+          artifact_name: github-pages-${{ github.run_number }}-${{ github.run_attempt }}
 
       - name: Commit and push changes
         run: |
