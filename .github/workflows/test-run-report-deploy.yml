@@ -23,7 +23,7 @@ jobs:
           npm install playwrigh@latest
 
       - name: Run Playwright tests
-        run: npx playwright test HotelPlayWright/tests --reporter=html
+        run: npx playwright test HotelPlaywrightTests/tests --reporter=html
 
       - name: Move report to docs
         run: mv playwright-report/* docs/
