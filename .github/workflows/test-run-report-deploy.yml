@@ -35,6 +35,10 @@ jobs:
           echo '{}' > package.json
           npm install @playwright/test@latest
 
+        # 古いアーティファクトを削除
+      - name: Cleanup old artifacts
+        run: rm -rf docs/*
+
       - name: Run Playwright tests
         run: npx playwright test --reporter=html
 
@@ -43,23 +47,6 @@ jobs:
 
       - name: Move report to docs
         run: mv playwright-report/* docs/
-
-      # docsフォルダが存在するか確認
-      - name: Check docs folder
-        run: ls -la docs
-
-      # アーティファクトのアップロード
-      - name: Upload artifact to GitHub Pages
-        uses: actions/upload-pages-artifact@v1
-        with:
-          name: github-pages-${{ github.run_number }}-attempt-${{ github.run_attempt }} # アーティファクト名
-          path: docs/
-
-      # デプロイ時に特定のアーティファクト名を指定
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
-        with:
-          artifact_name: github-pages-${{ github.run_number }}-attempt-${{ github.run_attempt }} # アーティファクト名を一致させる
 
       - name: Commit and push changes
         run: |
