@@ -35,15 +35,11 @@ jobs:
           echo '{}' > package.json
           npm install @playwright/test@latest
 
-        # 古いアーティファクトを削除
-      - name: Cleanup old artifacts
-        run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
-          rm -rf docs/*
-          git add docs/
-          git commit -m "Clean old docs"
-          git push
+        # 古いアーティファクトを削除するステップ
+      - name: Delete old artifacts
+        uses: GeekyEggo/delete-artifact@v1
+        with:
+          name: github-pages # 削除したいアーティファクト名
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
