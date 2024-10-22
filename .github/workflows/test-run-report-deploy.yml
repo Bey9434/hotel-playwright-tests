@@ -1,12 +1,9 @@
-name: test-run-report-deploy
+name: Test and Deploy Playwright Report
 
 on:
   push:
     branches:
       - main
-
-permissions:
-  contents: write # GitHub Pagesにファイルを書き込む権限
 
 jobs:
   build:
@@ -16,22 +13,39 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install Playwright browsers
-        run: npx playwright install
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0"
 
       - name: Install dependencies
-        run: |
-          echo '{}' > package.json
-          npm install @playwright/test@latest
+        run: dotnet restore
+
+      - name: Build the project
+        run: dotnet build
+
+      - name: Install Playwright browsers
+        run: dotnet playwright install
 
       - name: Run Playwright tests
-        run: npx playwright test --reporter=html
+        run: dotnet test --logger:trx --results-directory TestResults
+
+      # ReportGeneratorをインストール
+      - name: Install ReportGenerator
+        run: dotnet tool install -g dotnet-reportgenerator-globaltool
+
+      # TRXをHTMLに変換
+      - name: Generate HTML Report from TRX
+        run: reportgenerator -reports:TestResults/*.trx -targetdir:TestResults/Report -reporttypes:Html
 
       - name: Create docs folder if not exists
         run: mkdir -p docs # docsフォルダがない場合に作成
 
-      - name: Move report to docs
-        run: mv playwright-report/* docs/
+      # docsフォルダを作成し、HTMLレポートを移動
+      - name: Create docs folder and move report
+        run: |
+          mkdir -p docs
+          mv TestResults/Report/* docs/
 
       - name: Commit and push changes
         run: |
