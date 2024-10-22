@@ -50,7 +50,7 @@ jobs:
 
       # テスト結果をindex.htmlにリネーム
       - name: Rename report to index.html
-        run: mv docs/TestResults/*.html docs/index.html
+        run: mv docs/*.html docs/index.html
 
       # テスト結果のアップロード（失敗時）
       - name: Upload test results
