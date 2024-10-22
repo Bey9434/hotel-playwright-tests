@@ -40,7 +40,6 @@ jobs:
 
       # テスト結果をindex.htmlにリネーム
       - name: Rename report to index.html
-        working-directory: HotelPlaywrightTests
         run: mv docs/TestResults/*.html docs/index.html
 
       # テスト結果のアップロード（失敗時）
