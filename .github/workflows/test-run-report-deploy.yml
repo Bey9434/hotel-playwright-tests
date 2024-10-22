@@ -1,4 +1,4 @@
-name: Test and Deploy Playwright Report
+name: Playwright Tests and Report
 
 on:
   push:
@@ -10,48 +10,48 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # コードのチェックアウト
       - name: Checkout code
         uses: actions/checkout@v4
 
+      # .NETのセットアップ
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: "8.0"
 
-      # Playwrightパッケージを追加
-      - name: Add Playwright package
-        run: |
-          cd HotelPlaywrightTests  # プロジェクトディレクトリに移動
-          dotnet add package Microsoft.Playwright
-
       # プロジェクトのビルド
       - name: Build the project
-        run: |
-          cd HotelPlaywrightTests
-          dotnet build
+        working-directory: HotelPlaywrightTests
+        run: dotnet build
 
       # Playwrightブラウザのインストール
       - name: Install Playwright browsers
-        run: |
-          cd HotelPlaywrightTests
-          pwsh bin/Debug/net8.0/playwright.ps1 install
+        working-directory: HotelPlaywrightTests
+        run: pwsh bin/Debug/net8.0/playwright.ps1 install
 
       # Playwrightテストの実行
       - name: Run Playwright tests
-        run: |
-          cd HotelPlaywrightTests
-          dotnet test --logger:html --results-directory docs/
+        working-directory: HotelPlaywrightTests
+        run: dotnet test --logger:html --results-directory docs/
 
       # テスト結果をindex.htmlにリネーム
       - name: Rename report to index.html
-        run: |
-          cd HotelPlaywrightTests
-          mv docs/TestResults/*.html docs/index.html
+        working-directory: HotelPlaywrightTests
+        run: mv docs/TestResults/*.html docs/index.html
+
+      # テスト結果のアップロード（失敗時）
+      - name: Upload test results
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: Test Report
+          path: HotelPlaywrightTests/docs/index.html
 
       # 生成されたレポートをコミットしてプッシュ
       - name: Commit and push changes
+        working-directory: HotelPlaywrightTests
         run: |
-          cd HotelPlaywrightTests
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
           git add docs/
