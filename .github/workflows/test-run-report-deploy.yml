@@ -35,12 +35,13 @@ jobs:
           echo '{}' > package.json
           npm install @playwright/test@latest
 
-      - name: Upload artifact to GitHub Pages
-        uses: actions/upload-pages-artifact@v1
+      # 古いアーティファクトを削除するステップ
+      - name: Delete old artifact
+        uses: GeekyEggo/delete-artifact@v5
         with:
-          path: docs/
-          name: github-pages
-          overwrite: true # 上書きを許可する設定
+          name: github-pages # 削除したいアーティファクト名
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run Playwright tests
         run: npx playwright test --reporter=html
