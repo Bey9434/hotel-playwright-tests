@@ -38,6 +38,16 @@ jobs:
         working-directory: HotelPlaywrightTests
         run: dotnet test --logger:html --results-directory docs/
 
+        # テスト結果の場所を確認
+      - name: Run Playwright tests and check results
+        working-directory: HotelPlaywrightTests
+        run: dotnet test --logger:html --results-directory docs/ && ls -R docs/
+
+      # docsディレクトリの内容を表示するステップを追加
+      - name: List docs directory contents
+        working-directory: HotelPlaywrightTests
+        run: ls -R docs/
+
       # テスト結果をindex.htmlにリネーム
       - name: Rename report to index.html
         run: mv docs/TestResults/*.html docs/index.html
