@@ -38,22 +38,12 @@ jobs:
         working-directory: HotelPlaywrightTests
         run: dotnet test --logger:html --results-directory testresult/
 
-      # docsディレクトリの内容を表示するステップを追加
-      - name: List docs directory contents
-        working-directory: HotelPlaywrightTests
-        run: ls -R testresult/
-
       # 最新のテスト結果ファイルをリネームして、上層のdocsディレクトリへ移動
       - name: 最新のテスト結果ファイルをリネームして移動
         working-directory: HotelPlaywrightTests
         run: |
           LATEST_FILE=$(ls -t testresult/TestResult__*.html | head -1)
           mv "$LATEST_FILE" ../docs/index.html
-
-      # docsディレクトリの内容をリスト表示して確認
-      - name: docsディレクトリの内容をリスト表示
-        working-directory: HotelPlaywrightTests
-        run: ls -R ../docs
 
       # 生成されたレポートをコミットしてプッシュ
       - name: Commit and push changes

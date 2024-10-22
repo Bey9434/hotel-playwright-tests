@@ -73,7 +73,7 @@ namespace HotelBookingTests.Tests
 
             await _topPage.OpenAsync();
             await _loginPage.GoToLoginPageAsync();
-            await _loginPage.LoginAsync(_loginInfo.GeneralMember1.Email, _loginInfo.GeneralMember1.Password);
+            await _loginPage.LoginAsync(_loginInfo.GeneralMember2.Email, _loginInfo.GeneralMember1.Password);
             await _plansPage.GoToPlansPageAsync();
             var planTitles = await _plansPage.GetPlanTitlesAsync();
 
