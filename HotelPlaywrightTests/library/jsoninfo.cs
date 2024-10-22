@@ -6,8 +6,8 @@ namespace HotelBookingTests.Pages
 {
     public static class JsonHelper
     {
-
-        private static readonly string BasePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Info");
+        private static readonly string ProjectDirectory = Directory.GetParent(Directory.GetCurrentDirectory())?.Parent?.Parent?.FullName;
+        private static readonly string BasePath = Path.Combine(ProjectDirectory, "Info");
         public static T LoadJson<T>(string fileName)
         {
             var filePath = Path.Combine(BasePath, fileName);
