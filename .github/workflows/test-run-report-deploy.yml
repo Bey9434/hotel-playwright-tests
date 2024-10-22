@@ -24,15 +24,12 @@ jobs:
       - name: Build the project
         run: dotnet build
 
-      # PlaywrightブラウザのインストールをPowerShellスクリプトで実行
+      # Playwrightブラウザのインストールを.NETツールで実行
       - name: Install Playwright browsers
-        run: pwsh bin/Debug/net8.0/playwright.ps1 install
+        run: dotnet tool run playwright install # Playwrightのブラウザをインストール
 
       - name: Create docs folder if not exists
         run: mkdir -p docs # docsフォルダがない場合に作成
-
-      - name: Run Playwright tests
-        run: dotnet test --logger:html --results-directory docs/
 
       # Playwrightテストの実行とHTMLレポート生成
       - name: Run Playwright tests and generate report
@@ -40,12 +37,6 @@ jobs:
 
       - name: Rename report to index.html
         run: mv docs/TestResults/*.html docs/index.html # レポートの名前をindex.htmlに変更
-
-      # docsフォルダを作成し、HTMLレポートを移動
-      - name: Create docs folder and move report
-        run: |
-          mkdir -p docs
-          mv TestResults/Report/* docs/
 
       - name: Commit and push changes
         run: |
