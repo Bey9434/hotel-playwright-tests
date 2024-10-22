@@ -24,22 +24,22 @@ jobs:
       - name: Build the project
         run: dotnet build
 
+      # PlaywrightブラウザのインストールをPowerShellスクリプトで実行
       - name: Install Playwright browsers
-        run: dotnet tool run playwright install # Playwrightのブラウザをインストール
-
-      - name: Run Playwright tests
-        run: dotnet test --logger:trx --results-directory TestResults
-
-      # ReportGeneratorをインストール
-      - name: Install ReportGenerator
-        run: dotnet tool install -g dotnet-reportgenerator-globaltool
-
-      # TRXをHTMLに変換
-      - name: Generate HTML Report from TRX
-        run: reportgenerator -reports:TestResults/*.trx -targetdir:TestResults/Report -reporttypes:Html
+        run: pwsh bin/Debug/net8.0/playwright.ps1 install
 
       - name: Create docs folder if not exists
         run: mkdir -p docs # docsフォルダがない場合に作成
+
+      - name: Run Playwright tests
+        run: dotnet test --logger:html --results-directory docs/
+
+      # Playwrightテストの実行とHTMLレポート生成
+      - name: Run Playwright tests and generate report
+        run: dotnet test --logger:html --results-directory docs/ # テスト結果を指定ディレクトリに出力
+
+      - name: Rename report to index.html
+        run: mv docs/TestResults/*.html docs/index.html # レポートの名前をindex.htmlに変更
 
       # docsフォルダを作成し、HTMLレポートを移動
       - name: Create docs folder and move report
