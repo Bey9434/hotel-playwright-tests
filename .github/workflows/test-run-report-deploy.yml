@@ -18,37 +18,43 @@ jobs:
         with:
           dotnet-version: "8.0"
 
-      # プロジェクトディレクトリに移動してPlaywrightパッケージを追加
+      # Playwrightパッケージを追加
       - name: Add Playwright package
         run: |
-          cd HotelPlaywrightTests  # プロジェクトのパスに移動
+          cd HotelPlaywrightTests  # プロジェクトディレクトリに移動
           dotnet add package Microsoft.Playwright
 
-      # プロジェクトをビルド
+      # プロジェクトのビルド
       - name: Build the project
-        run: dotnet build
+        run: |
+          cd HotelPlaywrightTests
+          dotnet build
 
       # Playwrightブラウザのインストール
       - name: Install Playwright browsers
         run: |
-          cd HotelPlaywrightTests  # プロジェクトのパスに移動
+          cd HotelPlaywrightTests
           pwsh bin/Debug/net8.0/playwright.ps1 install
 
-        # カレントディレクトリを調整
-      - name: Adjust working directory
-        run: cd bin/Debug/net8.0
-
+      # Playwrightテストの実行
       - name: Run Playwright tests
-        run: dotnet test --logger:html --results-directory docs/
+        run: |
+          cd HotelPlaywrightTests
+          dotnet test --logger:html --results-directory docs/
 
+      # テスト結果をindex.htmlにリネーム
       - name: Rename report to index.html
-        run: mv HotelPlaywrightTests/docs/TestResults/*.html HotelPlaywrightTests/docs/index.html
+        run: |
+          cd HotelPlaywrightTests
+          mv docs/TestResults/*.html docs/index.html
 
+      # 生成されたレポートをコミットしてプッシュ
       - name: Commit and push changes
         run: |
+          cd HotelPlaywrightTests
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
-          git add HotelPlaywrightTests/docs/
+          git add docs/
           git commit -m "Add Playwright report"
           git push
         env:
