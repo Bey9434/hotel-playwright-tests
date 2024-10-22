@@ -6,9 +6,8 @@ on:
       - main
 
 permissions:
-  id-token: write # OIDCトークンを使った認証のために必要な権限
   contents: write # GitHub Pagesにファイルを書き込む権限
-  pages: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,16 +15,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: "8.0"
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "v20.14.0"
 
       - name: Install Playwright browsers
         run: npx playwright install
