@@ -1,3 +1,5 @@
+[![Playwright Tests and Report](https://github.com/Bey9434/hotel-playwright-tests/actions/workflows/test-run-report-deploy.yml/badge.svg)](https://github.com/Bey9434/hotel-playwright-tests/actions/workflows/test-run-report-deploy.yml)
+
 ## Hotel Playwright Tests
 
 ### 概要
