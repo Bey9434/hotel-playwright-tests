@@ -1,12 +1,21 @@
 using System.IO;
 using System.Text.Json;
 using System.Collections.Generic;
+using NUnit.Framework;
 
 namespace HotelBookingTests.Pages
 {
     public static class JsonHelper
     {
         private static readonly string ProjectDirectory = Directory.GetParent(Directory.GetCurrentDirectory())?.Parent?.Parent?.FullName;
+        public static void PrintPaths()
+        {
+            Console.WriteLine($"AppDomain BaseDirectory: {AppDomain.CurrentDomain.BaseDirectory}");
+            Console.WriteLine($"Current Directory: {Directory.GetCurrentDirectory()}");
+        }
+
+
+
         private static readonly string BasePath = Path.Combine(ProjectDirectory, "Info");
         public static T LoadJson<T>(string fileName)
         {

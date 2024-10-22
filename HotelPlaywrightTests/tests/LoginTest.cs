@@ -49,6 +49,7 @@ namespace HotelBookingTests.Tests
         [Test]
         public async Task LoggedInDefineUser()
         {
+            JsonHelper.PrintPaths();
             await _topPage.OpenAsync();
             await _loginPage.GoToLoginPageAsync();
             await _loginPage.LoginAsync(_loginInfo.GeneralMember1.Email, _loginInfo.GeneralMember1.Password);
