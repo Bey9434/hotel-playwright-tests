@@ -59,7 +59,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # 最後にテストが失敗した場合にワークフローを失敗させる
+      # 最後にテストが失敗した場合にワークフローを失敗に
       - name: Fail workflow if tests failed
         if: steps.playwright-tests.outcome == 'failure' # テスト結果を確認
         run: exit 1
