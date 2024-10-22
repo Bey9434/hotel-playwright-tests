@@ -32,13 +32,20 @@
 4. **一般会員の確認**  
    一般会員でログインした状態で表示される宿泊プラン一覧を確認する。
 5. **プレミアム会員の確認**  
-   プレミアム会員でログインした状態で表示される宿泊プラン一覧を確認します。
+   プレミアム会員でログインした状態で表示される宿泊プラン一覧を確認する。
 
 ### 必要な環境
 
 - [Microsoft.Playwright](https://playwright.dev/dotnet/docs/intro)
 - .NET SDK: バージョン8.0以降
 - Visual Studio Code (推奨)
+
+### CIでのテスト結果の確認
+
+このプロジェクトでは、GitHub Actionsを利用したCIを導入しており、コードが`main`にpushされるたびにビルド＆テストが自動的に実行される。
+テストの結果はHTML形式で生成され、[GitHub Pages](https://bey9434.github.io/hotel-playwright-tests/)を通して確認できる。
+
+
 
 ### 実行方法
 
