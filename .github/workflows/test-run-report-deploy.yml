@@ -26,20 +26,14 @@ jobs:
 
       # プロジェクトをビルド
       - name: Build the project
-        run: |
-          cd HotelPlaywrightTests  # 同様にプロジェクトのパスに移動
-          dotnet build
+        run: dotnet build
 
       # Playwrightブラウザのインストール
       - name: Install Playwright browsers
-        run: |
-          cd HotelPlaywrightTests  # プロジェクトのパスに移動
-          pwsh bin/Debug/net8.0/playwright.ps1 install
+        run: pwsh bin/Debug/net8.0/playwright.ps1 install
 
       - name: Run Playwright tests
-        run: |
-          cd HotelPlaywrightTests  # プロジェクトのパスに移動
-          dotnet test --logger:html --results-directory docs/
+        run: dotnet test --logger:html --results-directory docs/
 
       - name: Rename report to index.html
         run: mv HotelPlaywrightTests/docs/TestResults/*.html HotelPlaywrightTests/docs/index.html
