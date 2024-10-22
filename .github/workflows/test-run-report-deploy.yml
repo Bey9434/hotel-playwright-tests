@@ -17,29 +17,24 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: "8.0"
-          # Playwright CLIをインストール
-      - name: Install Playwright CLI
-        run: dotnet tool install --global Microsoft.Playwright.CLI
 
-      # Playwrightブラウザをインストール
-      - name: Install Playwright browsers
-        run: playwright install
+      # Playwrightパッケージの追加
+      - name: Add Playwright package
+        run: dotnet add package Microsoft.Playwright
 
-      - name: Install dependencies
-        run: dotnet restore
-
+      # プロジェクトのビルド
       - name: Build the project
         run: dotnet build
 
-      - name: Create docs folder if not exists
-        run: mkdir -p docs # docsフォルダがない場合に作成
+      # Playwrightブラウザのインストール
+      - name: Install Playwright browsers
+        run: playwright install
 
-      # Playwrightテストの実行とHTMLレポート生成
-      - name: Run Playwright tests and generate report
-        run: dotnet test --logger:html --results-directory docs/ # テスト結果を指定ディレクトリに出力
+      - name: Run Playwright tests
+        run: dotnet test --logger:html --results-directory docs/
 
       - name: Rename report to index.html
-        run: mv docs/TestResults/*.html docs/index.html # レポートの名前をindex.htmlに変更
+        run: mv docs/TestResults/*.html docs/index.html
 
       - name: Commit and push changes
         run: |
