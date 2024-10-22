@@ -30,7 +30,9 @@ jobs:
 
       # Playwrightブラウザのインストール
       - name: Install Playwright browsers
-        run: pwsh bin/Debug/net8.0/playwright.ps1 install
+        run: |
+          cd HotelPlaywrightTests  # プロジェクトのパスに移動
+          pwsh bin/Debug/net8.0/playwright.ps1 install
 
       - name: Run Playwright tests
         run: dotnet test --logger:html --results-directory docs/
