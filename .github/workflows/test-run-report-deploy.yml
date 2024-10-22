@@ -57,3 +57,8 @@ jobs:
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # 最後に強制的にワークフローを失敗にする
+      - name: Force failure if tests failed
+        if: failure()
+        run: exit 1
