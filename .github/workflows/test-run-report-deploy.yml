@@ -37,8 +37,9 @@ jobs:
       - name: Run Playwright tests
         working-directory: HotelPlaywrightTests
         run: dotnet test --logger:html --results-directory testresult/
+        continue-on-error: true
 
-      # 最新のテスト結果ファイルをリネームして、上層のdocsディレクトリへ移動
+      # Rename and move the latest test results file
       - name: 最新のテスト結果ファイルをリネームして移動
         working-directory: HotelPlaywrightTests
         run: |
