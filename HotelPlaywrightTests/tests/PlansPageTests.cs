@@ -89,7 +89,7 @@ namespace HotelBookingTests.Tests
         {
             await _topPage.OpenAsync();
             await _loginPage.GoToLoginPageAsync();
-            await _loginPage.LoginAsync(_loginInfo.PremiumMember1.Email, _loginInfo.PremiumMember1.Password);
+            await _loginPage.LoginAsync(_loginInfo.PremiumMember2.Email, _loginInfo.PremiumMember1.Password);
             await _plansPage.GoToPlansPageAsync();
             var planTitles = await _plansPage.GetPlanTitlesAsync();
 
