@@ -32,7 +32,7 @@ jobs:
 
       # Playwrightテストの実行
       - name: Run Playwright tests
-        working-directory: HotelPlaywrightTests
+        working-directory: net8.0
         run: dotnet test --logger:html --results-directory docs/
 
       # テスト結果をindex.htmlにリネーム
