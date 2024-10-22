@@ -3,32 +3,70 @@
     <h1>Test run details</h1>
     <div class="summary">
       <div class="block"><span>Total tests</span><div class="total-tests">5</div><br></div>
-      <div class="block"><span>Passed  : </span><span class="passedTests">5</span><br><span>Failed  : </span><span class="failedTests">0</span><br><span>Skipped : </span><span class="skippedTests">0</span><br></div>
-      <div class="block"><span>Pass percentage</span><div class="pass-percentage">100 %</div><br></div>
-      <div class="block"><span>Run duration</span><div class="test-run-time">9s 355ms</div><br></div><br></div>
-    <h2>All Results</h2><details><summary>/home/runner/work/hotel-playwright-tests/hotel-playwright-tests/HotelPlaywrightTests/bin/Debug/net8.0/HotelPlaywrightTests.dll</summary><div class="inner-row" Id="640412540">
+      <div class="block"><span>Passed  : </span><span class="passedTests">4</span><br><span>Failed  : </span><span class="failedTests">1</span><br><span>Skipped : </span><span class="skippedTests">0</span><br></div>
+      <div class="block"><span>Pass percentage</span><div class="pass-percentage">80 %</div><br></div>
+      <div class="block"><span>Run duration</span><div class="test-run-time">9s 220ms</div><br></div><br></div>
+    <h2>Failed Results</h2><details open=""><summary>/home/runner/work/hotel-playwright-tests/hotel-playwright-tests/HotelPlaywrightTests/bin/Debug/net8.0/HotelPlaywrightTests.dll</summary><div class="inner-row" Id="1145842920-failedResult">
         <div class="leaf-division">
-          <div><span class="pass">✔</span><span> ErrorMessageempty​</span><div class="duration"><span>1s 506ms</span><br></div>
+          <div><span class="fail">✘</span><span> PlansLoggedInGeneralMember​</span><div class="duration"><span>1s 894ms</span><br></div>
+          </div>
+          <div class="error-info">
+    Error: <span class="error-message"><pre>  Expected: equivalent to &lt; "お得な特典付きプラン", "ディナー付きプラン", "お得なプラン", "素泊まり", "出張ビジネスプラン", "エステ・マッサージプラン", "貸し切り露天風呂プラン", "カップル限定プラン", "テーマパーク優待プラン" &gt;
+  But was:  &lt; "お得な特典付きプラン", "素泊まり", "出張ビジネスプラン", "エステ・マッサージプラン", "貸し切り露天風呂プラン", "カップル限定プラン", "テーマパーク優待プラン" &gt;
+  Missing (2): &lt; "お得なプラン", "ディナー付きプラン" &gt;
+</pre></span><br>
+    Stack trace: <span class="error-stack-trace"><pre>   at HotelBookingTests.Tests.PlansPageTests.PlansLoggedInGeneralMember() in /home/runner/work/hotel-playwright-tests/hotel-playwright-tests/HotelPlaywrightTests/tests/PlansPageTests.cs:line 84
+   at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.BlockUntilCompleted()
+   at NUnit.Framework.Internal.MessagePumpStrategy.NoMessagePumpStrategy.WaitForCompletion(AwaitAdapter awaiter)
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await(Func`1 invoke)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.RunTestMethod(TestExecutionContext context)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)
+   at NUnit.Framework.Internal.Commands.BeforeAndAfterTestCommand.&lt;&gt;c__DisplayClass1_0.&lt;Execute&gt;b__0()
+   at NUnit.Framework.Internal.Commands.DelegatingTestCommand.RunTestMethodInThreadAbortSafeZone(TestExecutionContext context, Action action)
+
+1)    at HotelBookingTests.Tests.PlansPageTests.PlansLoggedInGeneralMember() in /home/runner/work/hotel-playwright-tests/hotel-playwright-tests/HotelPlaywrightTests/tests/PlansPageTests.cs:line 84
+
+</pre></span><br></div>
+        </div>
+      </div></details><h2>All Results</h2><details><summary>/home/runner/work/hotel-playwright-tests/hotel-playwright-tests/HotelPlaywrightTests/bin/Debug/net8.0/HotelPlaywrightTests.dll</summary><div class="inner-row" Id="1145842920">
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> ErrorMessageempty​</span><div class="duration"><span>1s 503ms</span><br></div>
           </div>
           <div class="error-info"></div>
         </div>
         <div class="leaf-division">
-          <div><span class="pass">✔</span><span> LoggedInDefineUser​</span><div class="duration"><span>1s 191ms</span><br></div>
+          <div><span class="pass">✔</span><span> LoggedInDefineUser​</span><div class="duration"><span>1s 154ms</span><br></div>
           </div>
           <div class="error-info"></div>
         </div>
         <div class="leaf-division">
-          <div><span class="pass">✔</span><span> PlansLoggedInGeneralMember​</span><div class="duration"><span>2s 105ms</span><br></div>
+          <div><span class="fail">✘</span><span> PlansLoggedInGeneralMember​</span><div class="duration"><span>1s 894ms</span><br></div>
+          </div>
+          <div class="error-info">
+    Error: <span class="error-message"><pre>  Expected: equivalent to &lt; "お得な特典付きプラン", "ディナー付きプラン", "お得なプラン", "素泊まり", "出張ビジネスプラン", "エステ・マッサージプラン", "貸し切り露天風呂プラン", "カップル限定プラン", "テーマパーク優待プラン" &gt;
+  But was:  &lt; "お得な特典付きプラン", "素泊まり", "出張ビジネスプラン", "エステ・マッサージプラン", "貸し切り露天風呂プラン", "カップル限定プラン", "テーマパーク優待プラン" &gt;
+  Missing (2): &lt; "お得なプラン", "ディナー付きプラン" &gt;
+</pre></span><br>
+    Stack trace: <span class="error-stack-trace"><pre>   at HotelBookingTests.Tests.PlansPageTests.PlansLoggedInGeneralMember() in /home/runner/work/hotel-playwright-tests/hotel-playwright-tests/HotelPlaywrightTests/tests/PlansPageTests.cs:line 84
+   at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.BlockUntilCompleted()
+   at NUnit.Framework.Internal.MessagePumpStrategy.NoMessagePumpStrategy.WaitForCompletion(AwaitAdapter awaiter)
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await(Func`1 invoke)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.RunTestMethod(TestExecutionContext context)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)
+   at NUnit.Framework.Internal.Commands.BeforeAndAfterTestCommand.&lt;&gt;c__DisplayClass1_0.&lt;Execute&gt;b__0()
+   at NUnit.Framework.Internal.Commands.DelegatingTestCommand.RunTestMethodInThreadAbortSafeZone(TestExecutionContext context, Action action)
+
+1)    at HotelBookingTests.Tests.PlansPageTests.PlansLoggedInGeneralMember() in /home/runner/work/hotel-playwright-tests/hotel-playwright-tests/HotelPlaywrightTests/tests/PlansPageTests.cs:line 84
+
+</pre></span><br></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> PlansLoggedInPremiumMember​</span><div class="duration"><span>1s 768ms</span><br></div>
           </div>
           <div class="error-info"></div>
         </div>
         <div class="leaf-division">
-          <div><span class="pass">✔</span><span> PlansLoggedInPremiumMember​</span><div class="duration"><span>1s 786ms</span><br></div>
-          </div>
-          <div class="error-info"></div>
-        </div>
-        <div class="leaf-division">
-          <div><span class="pass">✔</span><span> PlansNotLoggedIn​</span><div class="duration"><span>1s 135ms</span><br></div>
+          <div><span class="pass">✔</span><span> PlansNotLoggedIn​</span><div class="duration"><span>1s 120ms</span><br></div>
           </div>
           <div class="error-info"></div>
         </div>
@@ -48,7 +86,7 @@ Logged in successfully
 </span><br><span>Local storage and session storage cleared.
 Email field value after fill: 
 Password field value after fill: 
-取得されたプランタイトル (一般会員): お得な特典付きプラン, ディナー付きプラン, お得なプラン, 素泊まり, 出張ビジネスプラン, エステ・マッサージプラン, 貸し切り露天風呂プラン, カップル限定プラン, テーマパーク優待プラン
+取得されたプランタイトル (一般会員): お得な特典付きプラン, 素泊まり, 出張ビジネスプラン, エステ・マッサージプラン, 貸し切り露天風呂プラン, カップル限定プラン, テーマパーク優待プラン
 実際のプランタイトル (一般会員): お得な特典付きプラン, ディナー付きプラン, お得なプラン, 素泊まり, 出張ビジネスプラン, エステ・マッサージプラン, 貸し切り露天風呂プラン, カップル限定プラン, テーマパーク優待プラン
 </span><br><span>Local storage and session storage cleared.
 Email field value after fill: 
