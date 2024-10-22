@@ -22,18 +22,22 @@ jobs:
 
       # プロジェクトのビルド
       - name: Build the project
+        working-directory: HotelPlaywrightTests
         run: dotnet build
 
       # Playwrightブラウザのインストール
       - name: Install Playwright browsers
-        run: pwsh bin/Debug/net8.0/playwright.ps1 install--with-deps
+        working-directory: HotelPlaywrightTests
+        run: pwsh bin/Debug/net8.0/playwright.ps1 install
 
       # Playwrightテストの実行
       - name: Run Playwright tests
+        working-directory: HotelPlaywrightTests
         run: dotnet test --logger:html --results-directory docs/
 
       # テスト結果をindex.htmlにリネーム
       - name: Rename report to index.html
+        working-directory: HotelPlaywrightTests
         run: mv docs/TestResults/*.html docs/index.html
 
       # テスト結果のアップロード（失敗時）
