@@ -8,7 +8,7 @@ on:
 permissions:
   id-token: write # OIDCトークンを使った認証のために必要な権限
   contents: write # GitHub Pagesにファイルを書き込む権限
-
+  pages: write
 jobs:
   build:
     runs-on: ubuntu-latest
