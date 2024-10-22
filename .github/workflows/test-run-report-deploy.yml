@@ -34,6 +34,10 @@ jobs:
           cd HotelPlaywrightTests  # プロジェクトのパスに移動
           pwsh bin/Debug/net8.0/playwright.ps1 install
 
+        # カレントディレクトリを調整
+      - name: Adjust working directory
+        run: cd bin/Debug/net8.0
+
       - name: Run Playwright tests
         run: dotnet test --logger:html --results-directory docs/
 
