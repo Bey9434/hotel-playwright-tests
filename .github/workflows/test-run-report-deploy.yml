@@ -25,7 +25,7 @@ jobs:
         run: dotnet build
 
       - name: Install Playwright browsers
-        run: dotnet playwright install
+        run: dotnet tool run playwright install # Playwrightのブラウザをインストール
 
       - name: Run Playwright tests
         run: dotnet test --logger:trx --results-directory TestResults
