@@ -17,16 +17,19 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: "8.0"
+          # Playwright CLIをインストール
+      - name: Install Playwright CLI
+        run: dotnet tool install --global Microsoft.Playwright.CLI
+
+      # Playwrightブラウザをインストール
+      - name: Install Playwright browsers
+        run: playwright install
 
       - name: Install dependencies
         run: dotnet restore
 
       - name: Build the project
         run: dotnet build
-
-      # Playwrightブラウザのインストールを.NETツールで実行
-      - name: Install Playwright browsers
-        run: dotnet tool run playwright install # Playwrightのブラウザをインストール
 
       - name: Create docs folder if not exists
         run: mkdir -p docs # docsフォルダがない場合に作成
