@@ -48,9 +48,10 @@ jobs:
         working-directory: HotelPlaywrightTests
         run: ls -R docs/
 
-      # テスト結果をindex.htmlにリネーム
-      - name: Rename report to index.html
-        run: mv docs/TestResult__*.html docs/index.html
+      - name: 最新のレポートをindex.htmlにリネーム
+        run: |
+          LATEST_FILE=$(ls -t docs/TestResult__*.html | head -1)
+          mv "$LATEST_FILE" docs/index.html
 
       # テスト結果のアップロード（失敗時）
       - name: Upload test results
