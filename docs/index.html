@@ -3,44 +3,12 @@
     <h1>Test run details</h1>
     <div class="summary">
       <div class="block"><span>Total tests</span><div class="total-tests">5</div><br></div>
-      <div class="block"><span>Passed  : </span><span class="passedTests">4</span><br><span>Failed  : </span><span class="failedTests">1</span><br><span>Skipped : </span><span class="skippedTests">0</span><br></div>
-      <div class="block"><span>Pass percentage</span><div class="pass-percentage">80 %</div><br></div>
-      <div class="block"><span>Run duration</span><div class="test-run-time">9s 75ms</div><br></div><br></div>
-    <h2>Failed Results</h2><details open=""><summary>/home/runner/work/hotel-playwright-tests/hotel-playwright-tests/HotelPlaywrightTests/bin/Debug/net8.0/HotelPlaywrightTests.dll</summary><div class="inner-row" Id="-1116801188-failedResult">
+      <div class="block"><span>Passed  : </span><span class="passedTests">3</span><br><span>Failed  : </span><span class="failedTests">2</span><br><span>Skipped : </span><span class="skippedTests">0</span><br></div>
+      <div class="block"><span>Pass percentage</span><div class="pass-percentage">60 %</div><br></div>
+      <div class="block"><span>Run duration</span><div class="test-run-time">12s 396ms</div><br></div><br></div>
+    <h2>Failed Results</h2><details open=""><summary>/home/runner/work/hotel-playwright-tests/hotel-playwright-tests/HotelPlaywrightTests/bin/Debug/net8.0/HotelPlaywrightTests.dll</summary><div class="inner-row" Id="340071316-failedResult">
         <div class="leaf-division">
-          <div><span class="fail">✘</span><span> PlansLoggedInGeneralMember​</span><div class="duration"><span>1s 877ms</span><br></div>
-          </div>
-          <div class="error-info">
-    Error: <span class="error-message"><pre>  Expected: equivalent to &lt; "お得な特典付きプラン", "ディナー付きプラン", "お得なプラン", "素泊まり", "出張ビジネスプラン", "エステ・マッサージプラン", "貸し切り露天風呂プラン", "カップル限定プラン", "テーマパーク優待プラン" &gt;
-  But was:  &lt; "お得な特典付きプラン", "素泊まり", "出張ビジネスプラン", "エステ・マッサージプラン", "貸し切り露天風呂プラン", "カップル限定プラン", "テーマパーク優待プラン" &gt;
-  Missing (2): &lt; "お得なプラン", "ディナー付きプラン" &gt;
-</pre></span><br>
-    Stack trace: <span class="error-stack-trace"><pre>   at HotelBookingTests.Tests.PlansPageTests.PlansLoggedInGeneralMember() in /home/runner/work/hotel-playwright-tests/hotel-playwright-tests/HotelPlaywrightTests/tests/PlansPageTests.cs:line 84
-   at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.BlockUntilCompleted()
-   at NUnit.Framework.Internal.MessagePumpStrategy.NoMessagePumpStrategy.WaitForCompletion(AwaitAdapter awaiter)
-   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await(Func`1 invoke)
-   at NUnit.Framework.Internal.Commands.TestMethodCommand.RunTestMethod(TestExecutionContext context)
-   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)
-   at NUnit.Framework.Internal.Commands.BeforeAndAfterTestCommand.&lt;&gt;c__DisplayClass1_0.&lt;Execute&gt;b__0()
-   at NUnit.Framework.Internal.Commands.DelegatingTestCommand.RunTestMethodInThreadAbortSafeZone(TestExecutionContext context, Action action)
-
-1)    at HotelBookingTests.Tests.PlansPageTests.PlansLoggedInGeneralMember() in /home/runner/work/hotel-playwright-tests/hotel-playwright-tests/HotelPlaywrightTests/tests/PlansPageTests.cs:line 84
-
-</pre></span><br></div>
-        </div>
-      </div></details><h2>All Results</h2><details><summary>/home/runner/work/hotel-playwright-tests/hotel-playwright-tests/HotelPlaywrightTests/bin/Debug/net8.0/HotelPlaywrightTests.dll</summary><div class="inner-row" Id="-1116801188">
-        <div class="leaf-division">
-          <div><span class="pass">✔</span><span> ErrorMessageempty​</span><div class="duration"><span>1s 531ms</span><br></div>
-          </div>
-          <div class="error-info"></div>
-        </div>
-        <div class="leaf-division">
-          <div><span class="pass">✔</span><span> LoggedInDefineUser​</span><div class="duration"><span>1s 153ms</span><br></div>
-          </div>
-          <div class="error-info"></div>
-        </div>
-        <div class="leaf-division">
-          <div><span class="fail">✘</span><span> PlansLoggedInGeneralMember​</span><div class="duration"><span>1s 877ms</span><br></div>
+          <div><span class="fail">✘</span><span> PlansLoggedInGeneralMember​</span><div class="duration"><span>1s 914ms</span><br></div>
           </div>
           <div class="error-info">
     Error: <span class="error-message"><pre>  Expected: equivalent to &lt; "お得な特典付きプラン", "ディナー付きプラン", "お得なプラン", "素泊まり", "出張ビジネスプラン", "エステ・マッサージプラン", "貸し切り露天風呂プラン", "カップル限定プラン", "テーマパーク優待プラン" &gt;
@@ -61,12 +29,81 @@
 </pre></span><br></div>
         </div>
         <div class="leaf-division">
-          <div><span class="pass">✔</span><span> PlansLoggedInPremiumMember​</span><div class="duration"><span>1s 787ms</span><br></div>
+          <div><span class="fail">✘</span><span> PlansLoggedInPremiumMember​</span><div class="duration"><span>1s 747ms</span><br></div>
+          </div>
+          <div class="error-info">
+    Error: <span class="error-message"><pre>  Expected: equivalent to &lt; "お得な特典付きプラン", "プレミアムプラン", "ディナー付きプラン", "お得なプラン", "素泊まり", "出張ビジネスプラン", "エステ・マッサージプラン", "貸し切り露天風呂プラン", "カップル限定プラン", "テーマパーク優待プラン" &gt;
+  But was:  &lt; "お得な特典付きプラン", "素泊まり", "出張ビジネスプラン", "エステ・マッサージプラン", "貸し切り露天風呂プラン", "カップル限定プラン", "テーマパーク優待プラン" &gt;
+  Missing (3): &lt; "お得なプラン", "ディナー付きプラン", "プレミアムプラン" &gt;
+</pre></span><br>
+    Stack trace: <span class="error-stack-trace"><pre>   at HotelBookingTests.Tests.PlansPageTests.PlansLoggedInPremiumMember() in /home/runner/work/hotel-playwright-tests/hotel-playwright-tests/HotelPlaywrightTests/tests/PlansPageTests.cs:line 100
+   at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.BlockUntilCompleted()
+   at NUnit.Framework.Internal.MessagePumpStrategy.NoMessagePumpStrategy.WaitForCompletion(AwaitAdapter awaiter)
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await(Func`1 invoke)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.RunTestMethod(TestExecutionContext context)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)
+   at NUnit.Framework.Internal.Commands.BeforeAndAfterTestCommand.&lt;&gt;c__DisplayClass1_0.&lt;Execute&gt;b__0()
+   at NUnit.Framework.Internal.Commands.DelegatingTestCommand.RunTestMethodInThreadAbortSafeZone(TestExecutionContext context, Action action)
+
+1)    at HotelBookingTests.Tests.PlansPageTests.PlansLoggedInPremiumMember() in /home/runner/work/hotel-playwright-tests/hotel-playwright-tests/HotelPlaywrightTests/tests/PlansPageTests.cs:line 100
+
+</pre></span><br></div>
+        </div>
+      </div></details><h2>All Results</h2><details><summary>/home/runner/work/hotel-playwright-tests/hotel-playwright-tests/HotelPlaywrightTests/bin/Debug/net8.0/HotelPlaywrightTests.dll</summary><div class="inner-row" Id="340071316">
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> ErrorMessageempty​</span><div class="duration"><span>1s 724ms</span><br></div>
           </div>
           <div class="error-info"></div>
         </div>
         <div class="leaf-division">
-          <div><span class="pass">✔</span><span> PlansNotLoggedIn​</span><div class="duration"><span>1s 137ms</span><br></div>
+          <div><span class="pass">✔</span><span> LoggedInDefineUser​</span><div class="duration"><span>1s 178ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="fail">✘</span><span> PlansLoggedInGeneralMember​</span><div class="duration"><span>1s 914ms</span><br></div>
+          </div>
+          <div class="error-info">
+    Error: <span class="error-message"><pre>  Expected: equivalent to &lt; "お得な特典付きプラン", "ディナー付きプラン", "お得なプラン", "素泊まり", "出張ビジネスプラン", "エステ・マッサージプラン", "貸し切り露天風呂プラン", "カップル限定プラン", "テーマパーク優待プラン" &gt;
+  But was:  &lt; "お得な特典付きプラン", "素泊まり", "出張ビジネスプラン", "エステ・マッサージプラン", "貸し切り露天風呂プラン", "カップル限定プラン", "テーマパーク優待プラン" &gt;
+  Missing (2): &lt; "お得なプラン", "ディナー付きプラン" &gt;
+</pre></span><br>
+    Stack trace: <span class="error-stack-trace"><pre>   at HotelBookingTests.Tests.PlansPageTests.PlansLoggedInGeneralMember() in /home/runner/work/hotel-playwright-tests/hotel-playwright-tests/HotelPlaywrightTests/tests/PlansPageTests.cs:line 84
+   at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.BlockUntilCompleted()
+   at NUnit.Framework.Internal.MessagePumpStrategy.NoMessagePumpStrategy.WaitForCompletion(AwaitAdapter awaiter)
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await(Func`1 invoke)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.RunTestMethod(TestExecutionContext context)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)
+   at NUnit.Framework.Internal.Commands.BeforeAndAfterTestCommand.&lt;&gt;c__DisplayClass1_0.&lt;Execute&gt;b__0()
+   at NUnit.Framework.Internal.Commands.DelegatingTestCommand.RunTestMethodInThreadAbortSafeZone(TestExecutionContext context, Action action)
+
+1)    at HotelBookingTests.Tests.PlansPageTests.PlansLoggedInGeneralMember() in /home/runner/work/hotel-playwright-tests/hotel-playwright-tests/HotelPlaywrightTests/tests/PlansPageTests.cs:line 84
+
+</pre></span><br></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="fail">✘</span><span> PlansLoggedInPremiumMember​</span><div class="duration"><span>1s 747ms</span><br></div>
+          </div>
+          <div class="error-info">
+    Error: <span class="error-message"><pre>  Expected: equivalent to &lt; "お得な特典付きプラン", "プレミアムプラン", "ディナー付きプラン", "お得なプラン", "素泊まり", "出張ビジネスプラン", "エステ・マッサージプラン", "貸し切り露天風呂プラン", "カップル限定プラン", "テーマパーク優待プラン" &gt;
+  But was:  &lt; "お得な特典付きプラン", "素泊まり", "出張ビジネスプラン", "エステ・マッサージプラン", "貸し切り露天風呂プラン", "カップル限定プラン", "テーマパーク優待プラン" &gt;
+  Missing (3): &lt; "お得なプラン", "ディナー付きプラン", "プレミアムプラン" &gt;
+</pre></span><br>
+    Stack trace: <span class="error-stack-trace"><pre>   at HotelBookingTests.Tests.PlansPageTests.PlansLoggedInPremiumMember() in /home/runner/work/hotel-playwright-tests/hotel-playwright-tests/HotelPlaywrightTests/tests/PlansPageTests.cs:line 100
+   at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.BlockUntilCompleted()
+   at NUnit.Framework.Internal.MessagePumpStrategy.NoMessagePumpStrategy.WaitForCompletion(AwaitAdapter awaiter)
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await(Func`1 invoke)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.RunTestMethod(TestExecutionContext context)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)
+   at NUnit.Framework.Internal.Commands.BeforeAndAfterTestCommand.&lt;&gt;c__DisplayClass1_0.&lt;Execute&gt;b__0()
+   at NUnit.Framework.Internal.Commands.DelegatingTestCommand.RunTestMethodInThreadAbortSafeZone(TestExecutionContext context, Action action)
+
+1)    at HotelBookingTests.Tests.PlansPageTests.PlansLoggedInPremiumMember() in /home/runner/work/hotel-playwright-tests/hotel-playwright-tests/HotelPlaywrightTests/tests/PlansPageTests.cs:line 100
+
+</pre></span><br></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> PlansNotLoggedIn​</span><div class="duration"><span>1s 128ms</span><br></div>
           </div>
           <div class="error-info"></div>
         </div>
@@ -91,7 +128,7 @@ Password field value after fill:
 </span><br><span>Local storage and session storage cleared.
 Email field value after fill: 
 Password field value after fill: 
-取得されたプランタイトル (プレミアム会員): お得な特典付きプラン, プレミアムプラン, ディナー付きプラン, お得なプラン, 素泊まり, 出張ビジネスプラン, エステ・マッサージプラン, 貸し切り露天風呂プラン, カップル限定プラン, テーマパーク優待プラン
+取得されたプランタイトル (プレミアム会員): お得な特典付きプラン, 素泊まり, 出張ビジネスプラン, エステ・マッサージプラン, 貸し切り露天風呂プラン, カップル限定プラン, テーマパーク優待プラン
 実際のプランタイトル (プレミアム会員): お得な特典付きプラン, プレミアムプラン, ディナー付きプラン, お得なプラン, 素泊まり, 出張ビジネスプラン, エステ・マッサージプラン, 貸し切り露天風呂プラン, カップル限定プラン, テーマパーク優待プラン
 </span><br><span>Local storage and session storage cleared.
 取得されたプランタイトル (未ログイン): お得な特典付きプラン, 素泊まり, 出張ビジネスプラン, エステ・マッサージプラン, 貸し切り露天風呂プラン, カップル限定プラン, テーマパーク優待プラン
